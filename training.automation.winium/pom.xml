@@ -1,0 +1,153 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>training.automation.winium</groupId>
+  <artifactId>training.automation.winium</artifactId>
+  <version>0.1</version>
+
+ <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<!-- Dependency Version Quick View -->	
+		<apache.common.csv.version>1.4</apache.common.csv.version>	
+		<cucumber.jenkins.report.version>3.7.0</cucumber.jenkins.report.version>
+		<cucumber.reports.version>1.0.5</cucumber.reports.version>
+		<cucumber.version>1.2.4</cucumber.version>
+		<gherkin.version>2.12.2</gherkin.version>
+		<java.hamcrest.version>2.0.0.0</java.hamcrest.version>
+		<java.version>1.8</java.version>
+		<junit.version>4.12</junit.version>
+		<selenium.version>3.4.0</selenium.version>
+		<testng.version>6.11</testng.version>
+		<winium.driver.version>0.1.0-1</winium.driver.version>
+		<winium.element.version>0.2.0-1</winium.element.version>
+		<applicationPath>C:\\Windows\\System32\\calc.exe</applicationPath>
+		<!--  <applicationPath>C:\Program Files (x86)\Microsoft Office\root\Office16\WINWORD.EXE</applicationPath> -->
+		<winiumPath>C:\\Users\\michael.butterfield\\Documents\\C\\Babys First Automation Framework\\training.automation.winium\\Drivers\\Winium.Desktop.Driver.exe</winiumPath>
+		<winiumPort>9999</winiumPort>
+</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+			    <groupId>io.qameta.allure</groupId>
+			    <artifactId>allure-maven</artifactId>
+			    <version>2.9</version>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.20</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
+					<systemPropertyVariables>
+                        <applicationPath>${applicationPath}</applicationPath>
+						<winiumPath>${winiumPath}</winiumPath>
+						<winiumPort>${winiumPort}</winiumPort>
+                    </systemPropertyVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+	 <!-- Common Project -->
+		<dependency>
+		  <groupId>training.automation.common</groupId>
+		  <artifactId>training.automation.common</artifactId>
+		  <version>0.1</version>
+		</dependency>  		
+		
+		
+		<!-- Cucumber -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-core</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.mkolisnyk</groupId>
+			<artifactId>cucumber-reports</artifactId>
+			<version>${cucumber.reports.version}</version>
+		</dependency>
+		
+		<!-- CSV -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-csv</artifactId>
+		    <version>${apache.common.csv.version}</version>
+		</dependency>
+		
+		<!-- Cucumber Reports -->
+		<dependency>
+			<groupId>net.masterthought</groupId>
+			<artifactId>cucumber-reporting</artifactId>
+			<version>${cucumber.jenkins.report.version}</version>
+		</dependency>
+		
+		<!-- Gherkin -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>gherkin</artifactId>
+			<version>${gherkin.version}</version>
+		</dependency>
+		
+		<!-- Hamcrest Framework -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>java-hamcrest</artifactId>
+			<version>${java.hamcrest.version}</version>
+		</dependency>
+		
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
+		
+		<!-- TestNG -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+
+
+</project>

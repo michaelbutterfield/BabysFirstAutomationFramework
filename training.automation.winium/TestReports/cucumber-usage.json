@@ -1,0 +1,132 @@
+[
+  {
+    "source": "^I change the calculator to scientific$",
+    "steps": [
+      {
+        "name": "I change the calculator to scientific",
+        "aggregatedDurations": {
+          "average": 1.565120172,
+          "median": 1.565120172
+        },
+        "durations": [
+          {
+            "duration": 1.565120172,
+            "location": "Calculator.feature:18"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^the calculator is in standard mode$",
+    "steps": [
+      {
+        "name": "the calculator is in standard mode",
+        "aggregatedDurations": {
+          "average": 2.618736601,
+          "median": 2.618736601
+        },
+        "durations": [
+          {
+            "duration": 2.7827266,
+            "location": "Calculator.feature:6"
+          },
+          {
+            "duration": 2.454746602,
+            "location": "Calculator.feature:6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^the answer will be four$",
+    "steps": [
+      {
+        "name": "the answer will be four",
+        "aggregatedDurations": {
+          "average": 0.15279738,
+          "median": 0.15279738
+        },
+        "durations": [
+          {
+            "duration": 0.15279738,
+            "location": "Calculator.feature:13"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^I enter log ten",
+    "steps": [
+      {
+        "name": "I enter log ten",
+        "aggregatedDurations": {
+          "average": 1.967091596,
+          "median": 1.967091596
+        },
+        "durations": [
+          {
+            "duration": 1.967091596,
+            "location": "Calculator.feature:19"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^the calculator is open$",
+    "steps": [
+      {
+        "name": "the calculator is open",
+        "aggregatedDurations": {
+          "average": 0.134616503,
+          "median": 0.134616503
+        },
+        "durations": [
+          {
+            "duration": 0.134616503,
+            "location": "Calculator.feature:11"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^the answer will be one$",
+    "steps": [
+      {
+        "name": "the answer will be one",
+        "aggregatedDurations": {
+          "average": 0.13836059,
+          "median": 0.13836059
+        },
+        "durations": [
+          {
+            "duration": 0.13836059,
+            "location": "Calculator.feature:20"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "source": "^I enter the calculation$",
+    "steps": [
+      {
+        "name": "I enter the calculation",
+        "aggregatedDurations": {
+          "average": 2.600614248,
+          "median": 2.600614248
+        },
+        "durations": [
+          {
+            "duration": 2.600614248,
+            "location": "Calculator.feature:12"
+          }
+        ]
+      }
+    ]
+  }
+]
