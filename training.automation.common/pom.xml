@@ -1,15 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>training.automation.common</groupId>
-  <artifactId>training.automation.common</artifactId>
-  <version>0.1</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>training.automation.common</groupId>
+	<artifactId>training.automation.common</artifactId>
+	<version>0.1</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		
-		<!-- Dependency Version Quick View -->	
-		<apache.common.csv.version>1.4</apache.common.csv.version>	
+
+		<!-- Dependency Version Quick View -->
+		<apache.common.csv.version>1.4</apache.common.csv.version>
 		<cucumber.jenkins.report.version>3.7.0</cucumber.jenkins.report.version>
 		<cucumber.reports.version>1.0.5</cucumber.reports.version>
 		<cucumber.version>1.2.4</cucumber.version>
@@ -21,6 +23,7 @@
 		<testng.version>6.11</testng.version>
 		<winium.driver.version>0.1.0-1</winium.driver.version>
 		<winium.element.version>0.2.0-1</winium.element.version>
+		<rest.assured.version>3.1.1</rest.assured.version>
 	</properties>
 
 	<build>
@@ -38,14 +41,16 @@
 		</plugins>
 	</build>
 
+	<!-- Dependencies -->
 	<dependencies>
-		  	<!-- Appium -->
+
+		<!-- Appium -->
 		<dependency>
-		    <groupId>io.appium</groupId>
-		    <artifactId>java-client</artifactId>
-		    <version>4.1.2</version>
+			<groupId>io.appium</groupId>
+			<artifactId>java-client</artifactId>
+			<version>4.1.2</version>
 		</dependency>
-		
+
 		<!-- Selenium -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -78,11 +83,11 @@
 			<version>${selenium.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.google.guava</groupId>
-		    <artifactId>guava</artifactId>
-		    <version>21.0</version>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>21.0</version>
 		</dependency>
-		
+
 		<!-- Cucumber -->
 		<dependency>
 			<groupId>info.cukes</groupId>
@@ -104,59 +109,84 @@
 			<artifactId>cucumber-reports</artifactId>
 			<version>${cucumber.reports.version}</version>
 		</dependency>
-		
+
 		<!-- CSV -->
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-csv</artifactId>
-		    <version>${apache.common.csv.version}</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>${apache.common.csv.version}</version>
 		</dependency>
-		
+
 		<!-- Cucumber Reports -->
 		<dependency>
 			<groupId>net.masterthought</groupId>
 			<artifactId>cucumber-reporting</artifactId>
 			<version>${cucumber.jenkins.report.version}</version>
 		</dependency>
-		
+
 		<!-- Gherkin -->
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>gherkin</artifactId>
 			<version>${gherkin.version}</version>
 		</dependency>
-		
+
 		<!-- Hamcrest Framework -->
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>java-hamcrest</artifactId>
 			<version>${java.hamcrest.version}</version>
 		</dependency>
+
+		<!-- REST Assured -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>3.1.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+		      <groupId>io.rest-assured</groupId>
+		      <artifactId>json-path</artifactId>
+		      <version>3.1.1</version>
+		</dependency>
+		<dependency>
+		      <groupId>io.rest-assured</groupId>
+		      <artifactId>xml-path</artifactId>
+		      <version>3.1.1</version>
+		</dependency>
+		<dependency>
+		      <groupId>io.rest-assured</groupId>
+		      <artifactId>json-schema-validator</artifactId>
+		      <version>3.1.1</version>
+		      <scope>test</scope>
+		</dependency>
 		
+
 		<!-- JUnit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 		</dependency>
-		
+
 		<!-- TestNG -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>${testng.version}</version>
 		</dependency>
-		
-				<!-- Winium -->
-	    <dependency>
-		    <groupId>com.github.2gis.winium</groupId>
-		    <artifactId>winium-elements-desktop</artifactId>
-		    <version>${winium.element.version}</version>
-		</dependency>			
-	    <dependency>
-		    <groupId>com.github.2gis.winium</groupId>
-		    <artifactId>winium-webdriver</artifactId>
-		    <version>${winium.driver.version}</version>
+
+		<!-- Winium -->
+		<dependency>
+			<groupId>com.github.2gis.winium</groupId>
+			<artifactId>winium-elements-desktop</artifactId>
+			<version>${winium.element.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.2gis.winium</groupId>
+			<artifactId>winium-webdriver</artifactId>
+			<version>${winium.driver.version}</version>
 		</dependency>
 	</dependencies>
 </project>

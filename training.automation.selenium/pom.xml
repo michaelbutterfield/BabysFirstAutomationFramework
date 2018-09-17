@@ -19,8 +19,6 @@
 		<junit.version>4.12</junit.version>
 		<selenium.version>3.4.0</selenium.version>
 		<testng.version>6.11</testng.version>
-		<winium.driver.version>0.1.0-1</winium.driver.version>
-		<winium.element.version>0.2.0-1</winium.element.version>
 		<browser>chrome</browser>
 		<applicationWebsite>http://www.trello.com/</applicationWebsite>
 </properties>
