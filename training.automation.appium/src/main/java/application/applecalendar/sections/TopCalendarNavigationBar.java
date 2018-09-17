@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import application.pages.elements.appium.Button;
 import application.sections.Section;
 
-public class TopNavigationBar extends Section
+public class TopCalendarNavigationBar extends Section
 {
 	public Button search;
 	public Button add;
@@ -14,7 +14,7 @@ public class TopNavigationBar extends Section
 	public Button month;
 	public Button year;
 	
-	public TopNavigationBar()
+	public TopCalendarNavigationBar()
 	{
 		super("TopNavigationBar");
 		buildSection();

@@ -6,7 +6,7 @@ import application.pages.Page;
 import application.pages.elements.appium.Button;
 import application.pages.elements.appium.InputBox;
 
-public class NewEventPage extends Page
+public class NewCalendarEventPage extends Page
 {
 	public InputBox title;
 	public InputBox location;
@@ -17,7 +17,7 @@ public class NewEventPage extends Page
 	public InputBox notesInput;	//used to actually send keys to the notes input box
 	public Button add;
 	
-	public NewEventPage()
+	public NewCalendarEventPage()
 	{
 		super("AddPage");
 		buildPage();

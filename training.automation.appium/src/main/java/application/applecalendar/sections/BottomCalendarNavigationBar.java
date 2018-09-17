@@ -1,6 +1,6 @@
 package application.applecalendar.sections;
 
-public class BottomNavigationBar
+public class BottomCalendarNavigationBar
 {
 
 }

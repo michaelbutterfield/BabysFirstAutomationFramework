@@ -5,12 +5,12 @@ import org.openqa.selenium.By;
 import application.pages.Page;
 import application.pages.elements.appium.Button;
 
-public class MainPage extends Page
+public class MainCalendarPage extends Page
 {
 	public Button createdEvent;
 	
 	
-	public MainPage()
+	public MainCalendarPage()
 	{
 		super("MainScreen");
 		buildPage();

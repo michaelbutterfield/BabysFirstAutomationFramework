@@ -5,14 +5,14 @@ import org.openqa.selenium.By;
 import application.pages.elements.appium.Button;
 import application.sections.Section;
 
-public class BottomNavigationBar extends Section
+public class BottomClockNavigationBar extends Section
 {
 	public Button worldClock;
 	public Button alarm;
 	public Button stopwatch;
 	public Button timer;
 	
-	public BottomNavigationBar()
+	public BottomClockNavigationBar()
 	{
 		super("BottomNavigationBar");
 		buildSection();

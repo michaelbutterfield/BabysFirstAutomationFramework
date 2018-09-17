@@ -1,6 +1,6 @@
 package stepdefinitions;
 
-import application.Calendar;
+import application.MobileApp;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -13,49 +13,49 @@ public class CalendarSteps
 	@Given("^I am in the calendar$")
 	public void iAmInTheCalendar()
 	{
-		Calendar.topNavigationBar.add.assertElementExists();
+		MobileApp.topCalendarNavigationBar.add.assertElementExists();
 	}
 
 	@When("^I click the new event button$")
 	public void iClickTheNewEventButton()
 	{
-		Calendar.topNavigationBar.add.assertElementExists();
+		MobileApp.topCalendarNavigationBar.add.assertElementExists();
 		
-		Calendar.topNavigationBar.add.click();
+		MobileApp.topCalendarNavigationBar.add.click();
 	}
 
 	@And("^I enter a title$")
 	public void iEnterATitle()
 	{
-		Calendar.newEventPage.title.assertElementExists();
+		MobileApp.newCalendarEventPage.title.assertElementExists();
 		
-		Calendar.newEventPage.title.inputText("test test 123");
+		MobileApp.newCalendarEventPage.title.inputText("test test 123");
 	}
 	
 	@And("^I enter a location")
 	public void iEnterALocation()
 	{
-		Calendar.newEventPage.location.assertElementExists();
+		MobileApp.newCalendarEventPage.location.assertElementExists();
 		
-		Calendar.newEventPage.location.click();
+		MobileApp.newCalendarEventPage.location.click();
 		
-		Calendar.newEventPage.location.inputText("Preston, England");
+		MobileApp.newCalendarEventPage.location.inputText("Preston, England");
 		
-		Calendar.newEventPage.locationSpecific.assertElementExists();
+		MobileApp.newCalendarEventPage.locationSpecific.assertElementExists();
 		
-		Calendar.newEventPage.locationSpecific.click();
+		MobileApp.newCalendarEventPage.locationSpecific.click();
 	}
 	
 	@And("^I enter a repeat")
 	public void iEnterARepeat()
 	{
-		Calendar.newEventPage.repeats.assertElementExists();
+		MobileApp.newCalendarEventPage.repeats.assertElementExists();
 		
-		Calendar.newEventPage.repeats.click();
+		MobileApp.newCalendarEventPage.repeats.click();
 		
-		Calendar.newEventPage.repeatEveryWeek.assertElementExists();
+		MobileApp.newCalendarEventPage.repeatEveryWeek.assertElementExists();
 		
-		Calendar.newEventPage.repeatEveryWeek.click();
+		MobileApp.newCalendarEventPage.repeatEveryWeek.click();
 	}
 
 	@And("^I enter a note")
@@ -65,14 +65,14 @@ public class CalendarSteps
 		
 		ta.longPress(422, 363).moveTo(422, 63).release().perform();
 		
-		Calendar.newEventPage.notesInput.inputText("john sucks lol");
+		MobileApp.newCalendarEventPage.notesInput.inputText("john sucks lol");
 		
-		Calendar.newEventPage.add.click();
+		MobileApp.newCalendarEventPage.add.click();
 	}
 	
 	@Then("^the event will be created$")
 	public void theEventWillBeCreated()
 	{
-		Calendar.mainPage.createdEvent.assertElementExists();
+		MobileApp.mainCalendarPage.createdEvent.assertElementExists();
 	}
 }
