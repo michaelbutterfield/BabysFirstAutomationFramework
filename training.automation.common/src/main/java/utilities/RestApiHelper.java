@@ -3,12 +3,19 @@ package utilities;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 
+import data.TrelloData;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 
 public class RestApiHelper
@@ -19,7 +26,7 @@ public class RestApiHelper
 	
 	private RestApiHelper()
 	{
-		//misuse
+		//bleh
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -45,31 +52,66 @@ public class RestApiHelper
 			
 			TestHelper.handleException(errorMessage, e, false);
 		}
-		
-		
-		
+			
 		successfulPost();
 	}
 	
-	public static void extractJsonNodeText(String Key)
+	public static String extractJsonNodeText(String Key)
 	{
 		JsonPath jsonPathEval = response.jsonPath();
 		
 		String get = jsonPathEval.get(Key);
 		
 		System.out.println("Value received from response: " + get);
+		
+		return get;
 	}
 	
-	public String getApiKey()
+	public static String getTrelloBoardId(String boardName)
 	{
-		return apiKey;
-	}
+		RestAssured.baseURI = "https://api.trello.com";
+		
+		String getBoards = String.format("/1/search?query=%1$s&modelTypes=boards&board_fields=id&key=%2$s&token=%3$s", boardName, TrelloData.getApiKey(), TrelloData.getApiToken());
+		
+		Response boardResponse = RestAssured.get(getBoards);
 
-	public String getApiToken()
+		ArrayList board = boardResponse.getBody().jsonPath().get("boards");
+		
+		String boardString = board.toString();
+		
+		String strippedBoardId = boardString.substring(5, 29);
+		
+		return strippedBoardId;
+	}
+	
+	public static void createTrelloBoard(String boardName, String boardDesc)
 	{
-		return apiToken;
+		RestAssured.baseURI = "https://api.trello.com";
+		
+		String encodedBoardName = "";
+		
+		String encodedBoardDesc = "";
+		
+		try
+		{
+			encodedBoardName = URLEncoder.encode(boardName, "UTF-8");
+			encodedBoardDesc = URLEncoder.encode(boardDesc, "UTF-8");
+		}
+		catch (Exception e)
+		{
+			String errorMessage = String.format("Could not encode create board url");
+			TestHelper.handleException(errorMessage, e, false);
+		}
+		
+		String create = String.format("/1/boards/?name=%1$s&desc=%2$s&key=%3$s&token=%4$s", encodedBoardName, encodedBoardDesc, TrelloData.getApiKey(), TrelloData.getApiToken());
+		
+		System.out.println(create);
+		
+		Response createResponse = RestAssured.post(create);
+		
+		createResponse.prettyPrint();
 	}
-
+	
 	public static String getBaseURI()
 	{
 		return RestAssured.baseURI;
@@ -120,7 +162,4 @@ public class RestApiHelper
 			TestHelper.handleException(exceptionMessage, e, false);
 		}
 	}
-	
-	private String apiKey = "96bbf073f2a868d51a65f7eb91aa77ec";
-	private String apiToken = "bddf308320d934366e1dba02c60b9c0aa1bc64f12cadc478c47eb9657b0e3677";
 }

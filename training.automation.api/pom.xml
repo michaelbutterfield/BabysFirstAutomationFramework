@@ -20,7 +20,7 @@
 		<selenium.version>3.4.0</selenium.version>
 		<testng.version>6.11</testng.version>
 		<rest.assured.version>3.1.1</rest.assured.version>
-		<baseURI>http://restapi.demoqa.com/utilities/weather/city</baseURI>
+		<baseURI>https://api.trello.com/</baseURI>
 	</properties>
   
   	<build>
@@ -145,6 +145,34 @@
 			<groupId>org.hamcrest</groupId>
 			<artifactId>java-hamcrest</artifactId>
 			<version>${java.hamcrest.version}</version>
+		</dependency>
+		
+		<!-- REST Assured -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${rest.assured.version}</version>
+		</dependency>
+		<dependency>
+		      <groupId>io.rest-assured</groupId>
+		      <artifactId>json-path</artifactId>
+		      <version>${rest.assured.version}</version>
+		</dependency>
+		<dependency>
+		      <groupId>io.rest-assured</groupId>
+		      <artifactId>xml-path</artifactId>
+		      <version>${rest.assured.version}</version>
+		</dependency>
+		<dependency>
+		      <groupId>io.rest-assured</groupId>
+		      <artifactId>json-schema-validator</artifactId>
+		      <version>${rest.assured.version}</version>
+		</dependency>
+		<!-- json-simple -->
+		<dependency>
+		    <groupId>com.googlecode.json-simple</groupId>
+		    <artifactId>json-simple</artifactId>
+		    <version>1.1.1</version>
 		</dependency>
 		
 		<!-- JUnit -->

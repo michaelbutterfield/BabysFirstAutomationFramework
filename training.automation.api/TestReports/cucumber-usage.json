@@ -1,0 +1,20 @@
+[
+  {
+    "source": "^the API call response is correct$",
+    "steps": [
+      {
+        "name": "the API call response is correct",
+        "aggregatedDurations": {
+          "average": 4.085411099,
+          "median": 4.085411099
+        },
+        "durations": [
+          {
+            "duration": 4.085411099,
+            "location": "Trello.feature:7"
+          }
+        ]
+      }
+    ]
+  }
+]

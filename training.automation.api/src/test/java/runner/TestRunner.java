@@ -11,7 +11,7 @@ import utilities.RestApiHelper;
 @CucumberOptions(
 		features =	{ "src/test/resources/Features" },
 		glue =		{ "stepdefinitions", "utilities", "runner" },
-		tags =		{ "@BoardsPage" },
+		tags =		{ "@TrelloApi" },
 		plugin =	{ "pretty:target/resources/cucumber-pretty.txt", "usage:TestReports/cucumber-usage.json",
 					  "json:TestReports/cucumber.json", "html:target/resources/cucumber" })
 

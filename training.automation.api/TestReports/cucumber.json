@@ -1,0 +1,46 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 5,
+        "name": "Get all members boards",
+        "description": "",
+        "id": "automating-trello-through-api-calls;get-all-members-boards",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 4085411099,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "the API call response is correct",
+            "match": {
+              "location": "TrelloSteps.theApiCallResponseIsCorrect()"
+            },
+            "keyword": "Given "
+          }
+        ],
+        "tags": [
+          {
+            "line": 4,
+            "name": "@GetBoards"
+          }
+        ]
+      }
+    ],
+    "name": "Automating Trello through API calls",
+    "description": "",
+    "id": "automating-trello-through-api-calls",
+    "keyword": "Feature",
+    "uri": "Trello.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@TrelloApi"
+      }
+    ]
+  }
+]
