@@ -6,7 +6,6 @@ import org.testng.annotations.Parameters;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import utilities.RestApiHelper;
 
 @CucumberOptions(
 		features =	{ "src/test/resources/Features" },
@@ -22,7 +21,7 @@ public class TestRunner extends AbstractTestNGCucumberTests
 	@Parameters( { "baseUri" } )
 	public void testSetup(String baseUri)
 	{
-		RestApiHelper.initialise(baseUri);
+
 	}
 	
 	@AfterTest (alwaysRun = true)
