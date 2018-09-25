@@ -10,8 +10,6 @@ public class TrelloData
 {
 	private static String apiKey;
 	private static String apiToken;
-	
-	private static String boardId = "5b7abcb50c11b037639a6524";
 		
 	static
 	{
@@ -36,16 +34,6 @@ public class TrelloData
 		return apiToken;
 	}	
 	
-	public static String getBoardId()
-	{
-		return boardId;
-	}
-
-	public static void setBoardId(String passedBoardId)
-	{
-		boardId = passedBoardId;
-	}
-
 	private static void readApiKeyToken() throws IOException
 	{
 		//file to read from
@@ -74,8 +62,5 @@ public class TrelloData
 		}
 		
 		reader.close();
-		
-		System.out.println(apiKey);
-		System.out.println(apiToken);
 	}
 }
