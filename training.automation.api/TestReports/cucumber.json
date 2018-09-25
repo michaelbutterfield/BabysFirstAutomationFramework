@@ -12,8 +12,9 @@
         "steps": [
           {
             "result": {
-              "duration": 4085411099,
-              "status": "passed"
+              "duration": 5585714297,
+              "error_message": "java.lang.NullPointerException\r\n\tat utilities.ApiHelper.deleteTrelloBoard(ApiHelper.java:55)\r\n\tat stepdefinitions.TrelloSteps.theApiCallResponseIsCorrect(TrelloSteps.java:13)\r\n\tat ✽.Given the API call response is correct(Trello.feature:7)\r\n",
+              "status": "failed"
             },
             "line": 7,
             "name": "the API call response is correct",
