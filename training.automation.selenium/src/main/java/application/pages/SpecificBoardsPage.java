@@ -49,7 +49,7 @@ public class SpecificBoardsPage extends Page
 		permDeleteBoardConfirm = new Button(By.xpath("//*[@id=\"classic\"]/div[5]/div/div[2]/div/div/div/input"), "Yes, Permanently Delete Board.", name);
 		
 		//General
-		addAList = new Button(By.xpath("//span[contains(@class,'placeholder js-open-add-list')]"), "Add a list", name);
+		addAList = new Button(By.xpath("//a[contains(@class,'open-add-list js-open-add-list')]"), "Add a list", name);
 		addAnotherList = new Button(By.xpath("//div[contains(text(),'Add another list')]"), "Add another list (used for adding any list after the first one)", name);
 		
 		addListButton = new Button(By.xpath("//input[contains(@class,'primary mod-list-add-button js-save-edit')]"), "Add List Confirmation Button", name);
