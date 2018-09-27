@@ -29,7 +29,7 @@ public class BoardsPage extends Page
 		boardsSideBarButton = new Button(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div/div/div/div/div[1]/nav/div[1]/ul/li[1]/a/span[2]"),
 										 "Boards Side Bar Button", name);
 		
-		addButton = new Button(By.xpath("//*[@id=\"header\"]/div[4]/a[1]/span"), "Add Button", name);
+		addButton = new Button(By.xpath("//*[@id=\"header\"]/div[5]/a[1]/span"), "Add Button", name);
 		
 		createNewBoardButton = new Button(By.xpath("//*[@id=\"classic\"]/div[5]/div/div[2]/div/div/div/ul/li[1]/a"), "Create Board... Button", name);
 		
@@ -40,7 +40,7 @@ public class BoardsPage extends Page
 		
 		createBoardButton = new Button(By.xpath("//*[@id=\"classic\"]/div[4]/div/div/div/form/button/span[2]"), "Create Board Button", name);
 		
-		userBoardButton = new Button(By.xpath("//div[contains(text(),'TestBoard')]"), "User Created Board", name);
+		userBoardButton = new Button(By.xpath("//div[contains(@title, 'TestBoard')]"), "User Created Board", name);
 		
 		boardNotFound = new Label(By.xpath("//h1[contains(text(),'Board not found.')]"), "Board not found. message", name);
 		
