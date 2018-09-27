@@ -17,7 +17,7 @@ public class Header extends Section
 	
 	private void buildSections()
 	{
-		backToHome = new Image(By.xpath("//*[@id=\"header\"]/div[1]/a/span"), "Back to Home button in Top Left", name);
+		backToHome = new Image(By.xpath("//*[@id=\"header\"]/div[1]/a"), "Back to Home button in Top Left", name);
 		trelloLogoHome = new Image(By.xpath("//*[@id=\"header\"]/a/span[2]"), "Trello Logo Home Button", name);
 	}
 }
