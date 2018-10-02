@@ -39,12 +39,13 @@ public class Helper
 		{
 			Thread.sleep(2000);
 		}
-		catch (Exception e)
+		catch (InterruptedException e)
 		{
-			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		DesktopWebsite.header.backToHome.click();
+		DesktopWebsite.header.backToHome.jsClick();
 		
 		DesktopWebsite.boardsPage.userBoardButton.assertElementIsDisplayed();
 	}
