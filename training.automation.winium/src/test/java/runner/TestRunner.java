@@ -16,7 +16,6 @@ import utilities.WiniumDriverHelper;
 
 public class TestRunner extends AbstractTestNGCucumberTests
 {
-	
 	@BeforeTest
 	@Parameters( { "applicationPath", "winiumPath", "winiumPort" } )
 	public void testSetup(String applicationPath, String winiumPath, Integer winiumPort)
