@@ -48,7 +48,7 @@ public class SeleniumDriverHelper
 		driver.navigate().to( url );
 	}
 	
-	public static void initialise( String browser )
+	public static void initialise( String browser, String applicationWebsite )
 	{
 		browser = browser.toLowerCase();
 		
@@ -75,6 +75,9 @@ public class SeleniumDriverHelper
 		}
 		
 		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait( 30, TimeUnit.SECONDS );
+	
+		driver.get(applicationWebsite);
 		driver.manage().timeouts().implicitlyWait( 30, TimeUnit.SECONDS );
 	}
 	
