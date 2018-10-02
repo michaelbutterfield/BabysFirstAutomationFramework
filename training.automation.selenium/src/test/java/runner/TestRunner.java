@@ -6,6 +6,7 @@ import org.testng.annotations.Parameters;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
+import utilities.Helper;
 import utilities.SeleniumDriverHelper;
 
 @CucumberOptions(
@@ -19,15 +20,21 @@ public class TestRunner extends AbstractTestNGCucumberTests
 {
 	
 	@BeforeTest
-	@Parameters( { "browser", "applicationWebsite" } )
-	public void testSetup(String browser, String applicationWebsite)
+	@Parameters( { "browser", "applicationWebsite", "email", "password", "boardName" } )
+	public void testSetup(String browser, String applicationWebsite, String email, String password, String boardName)
 	{
-		SeleniumDriverHelper.initialise(browser);
+		SeleniumDriverHelper.initialise(browser, applicationWebsite);
+		
+		Helper.LogIn(email, password);
+		
+		Helper.CreateBoard(boardName);
 	}
 	
 	@AfterTest (alwaysRun = true)
 	public void testTearDown()
 	{
+		Helper.DeleteBoard();
+		
 		SeleniumDriverHelper.getWebDriver().quit();
 	}
 }
