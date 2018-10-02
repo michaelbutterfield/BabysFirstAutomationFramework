@@ -6,9 +6,9 @@ import application.pages.elements.selenium.*;
 
 public class LogInPage extends Page
 {
-	public Button logInButton;
 	public Link createAnAccount;
 	public InputBox emailAddress;
+	public Button logInButton;
 	public InputBox password;
 	
 	public LogInPage()
