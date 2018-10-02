@@ -5,45 +5,25 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
+import static org.hamcrest.Matchers.is;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import utilities.SeleniumDriverHelper;
+import utilities.TestHelper;
 
 public class BoardsPageSteps
 {
-	@Given ("^I set up the environment with \"(.*?)\" and \"(.*?)\"$")
-	public static void iSetUpTheEnvironmentWithEmailAndPassword(String email, String password)
-	{
-		SeleniumDriverHelper.getWebDriver().get("http://www.trello.com/login");
-		
-		DesktopWebsite.logInPage.createAnAccount.assertElementIsDisplayed();
-		
-		DesktopWebsite.logInPage.emailAddress.inputText(email);
-		
-		DesktopWebsite.logInPage.password.inputText(password);
-		
-		DesktopWebsite.logInPage.logInButton.click();
-		
-		DesktopWebsite.boardsPage.addButton.waitForElementToBeClickable();
-		
-		Assert.assertEquals(SeleniumDriverHelper.getWebDriver().getTitle(), "Boards | Trello");
-	}
-	
-	@Given ("^I click the add button in the top right")
-	public static void iClickTheAddButtonInTheTopRight()
-	{
-		DesktopWebsite.boardsPage.addButton.click();
-	}
-	
 	@Given ("^I am on the boards page$")
 	public static void iAmOnTheBoardsPage()
 	{
 		try
 		{
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 		}
 		catch (Exception e)
 		{
@@ -53,6 +33,24 @@ public class BoardsPageSteps
 		Assert.assertEquals("Boards | Trello", SeleniumDriverHelper.getWebDriver().getTitle());
 		
 		System.out.println("Assert browser is currently on the Boards page");
+	}
+	
+	@Given ("^I click on the user created board$")
+	public static void iClickOnTheUserCreatedBoard()
+	{
+		DesktopWebsite.boardsPage.userBoardButton.click();
+	}
+	
+	@Given ("^I click the add button in the top right")
+	public static void iClickTheAddButtonInTheTopRight()
+	{
+		DesktopWebsite.boardsPage.addButton.click();
+	}
+	
+	@When ("^I click the Create Board... option$")
+	public static void iClickTheCreateBoardOption()
+	{
+		DesktopWebsite.boardsPage.createNewBoardButton.click();
 	}
 	
 	@When ("^I click the favourite board star$")
@@ -77,11 +75,11 @@ public class BoardsPageSteps
 			//eat exception
 		}
 	}
-	
-	@When ("^I click the Create Board... option$")
-	public static void iClickTheCreateBoardOption()
+
+	@And ("^I confirm the board is no longer there$")
+	public static void iConfirmTheBoardIsNoLongerThere()
 	{
-		DesktopWebsite.boardsPage.createNewBoardButton.click();
+		DesktopWebsite.boardsPage.boardNotFound.assertElementTextContains("Board not found.");
 	}
 	
 	@And ("^I create a new board with \"(.*?)\" and a background$")
@@ -94,61 +92,12 @@ public class BoardsPageSteps
 		DesktopWebsite.boardsPage.createBoardButton.click();
 	}
 	
-	//delete board
-	@Given ("^I click on the user created board$")
-	public static void iClickOnTheUserCreatedBoard() throws InterruptedException
-	{
-		DesktopWebsite.boardsPage.userBoardButton.click();
-	}
-	
-	@When ("^I click More in the side menu$")
-	public static void iClickMoreInTheSideMenu()
-	{
-		DesktopWebsite.specificBoardsPage.moreSideMenuButton.click();
-	}
-	
-	@And ("^I click close board$")
-	public static void iClickCloseBoard()
-	{
-		DesktopWebsite.specificBoardsPage.closeBoard.click();
-	}
-	
-	@And ("^I click the close board confirmation$")
-	public static void iClickTheCloseBoardConfirmation()
-	{
-		DesktopWebsite.specificBoardsPage.closeBoardConfirmation.click();
-	}
-	
-	@And ("^I confirm the permanent deletion of the board$")
-	public static void iConfirmThePermanentDeletionOfTheBoard()
-	{
-		DesktopWebsite.specificBoardsPage.permDeleteBoard.click();
-	
-		DesktopWebsite.specificBoardsPage.permDeleteBoardConfirm.click();
-	}
-	
-	@And ("^I confirm the board is no longer there$")
-	public static void iConfirmTheBoardIsNoLongerThere()
-	{
-		DesktopWebsite.boardsPage.boardNotFound.assertElementTextContains("Board not found.");
-	}
-	
 	@Then ("^The board will be favourited$")
 	public static void theBoardWillBeFavourited()
 	{
-		
-	}
+		String boardIsStarred = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div/div/div/div/div[2]/div/div/div[1]/div/ul/li/a/div/div[2]/span/span")).getAttribute("class");
 	
-	@Then ("^I click the Trello Logo Home button$")
-	public static void iClickTheTrelloLogoHomeButton()
-	{
-		DesktopWebsite.header.trelloLogoHome.click();
-	}
-	
-	@Then ("^I click the Back to Home button$")
-	public static void iClickTheTrelloHomeButton()
-	{
-		DesktopWebsite.header.backToHome.jsClick();
+		TestHelper.assertThat(boardIsStarred, is("icon-sm icon-star is-starred board-tile-options-star-icon"), "Assert that the board has been hovered over and the star clicked - making it a favourite board");
 	}
 	
 	@Then ("^I confirm the board is created$")
