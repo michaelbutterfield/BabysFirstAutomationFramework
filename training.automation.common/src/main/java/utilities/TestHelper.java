@@ -18,6 +18,8 @@ public final class TestHelper
 	
 	public static <T> void assertThat(T actual, Matcher<? super T> matcher, String stepDescription, Boolean takeScreenshot)
 	{
+		System.out.println(stepDescription);
+		
 		try
 		{		
 			MatcherAssert.assertThat(stepDescription, actual, matcher);
