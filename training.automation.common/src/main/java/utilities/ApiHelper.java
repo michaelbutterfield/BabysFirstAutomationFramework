@@ -22,12 +22,13 @@ public class ApiHelper
 		/*
 			Thought it would fail due to spaces being in the API post request so tried replacing
 			it with +'s and %20's but when posting with the spaces left in it handles it fine
-		*/
 		
-//		String encodedBoardName = "";
-//		String encodedBoardDesc = "";
-//		encodedBoardName = URLEncoder.encode(boardName, "UTF-8").replaceAll("\\+", "%20");
-//		encodedBoardDesc = URLEncoder.encode(boardDesc, "UTF-8").replaceAll("\\+", "%20");
+		String encodedBoardName = "";
+		String encodedBoardDesc = "";
+		encodedBoardName = URLEncoder.encode(boardName, "UTF-8").replaceAll("\\+", "%20");
+		encodedBoardDesc = URLEncoder.encode(boardDesc, "UTF-8").replaceAll("\\+", "%20");
+		
+		*/
 		
 		String create = String.format("/1/boards/?name=%1$s&desc=%2$s&key=%3$s&token=%4$s", boardName, boardDesc, TrelloData.getApiKey(), TrelloData.getApiToken());
 		
@@ -59,7 +60,7 @@ public class ApiHelper
 		
 		Response boardResponse = RestAssured.get(getBoards);
 
-		ArrayList board = boardResponse.getBody().jsonPath().get("boards");
+		ArrayList<String> board = boardResponse.getBody().jsonPath().get("boards");
 		
 		String boardString = board.toString();
 		
@@ -72,18 +73,4 @@ public class ApiHelper
 	{
 		return RestAssured.baseURI;
 	}
-	
-//	public static void validateStatusCode()
-//	{
-//		try
-//		{
-//			Assert.assertEquals(/*Actual*/ getStatusCode(),
-//								/*Expected*/ correctStatusCode);
-//		}
-//		catch(Exception e)
-//		{
-//			String exceptionMessage = String.format("Status code returned was %1$s, not the expected 200 status code", getStatusCode());
-//			TestHelper.handleException(exceptionMessage, e, false);
-//		}
-//	}
 }
