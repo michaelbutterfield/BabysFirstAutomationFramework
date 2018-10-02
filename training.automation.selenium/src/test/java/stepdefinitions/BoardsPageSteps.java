@@ -41,8 +41,18 @@ public class BoardsPageSteps
 	@Given ("^I am on the boards page$")
 	public static void iAmOnTheBoardsPage()
 	{
-		Assert.assertEquals(SeleniumDriverHelper.getWebDriver().getTitle(), "Boards | Trello");
-		System.out.println("Asserted: Browser currently on the Boards page");
+		try
+		{
+			Thread.sleep(2000);
+		}
+		catch (Exception e)
+		{
+			
+		}
+		
+		Assert.assertEquals("Boards | Trello", SeleniumDriverHelper.getWebDriver().getTitle());
+		
+		System.out.println("Assert browser is currently on the Boards page");
 	}
 	
 	@When ("^I click the favourite board star$")
@@ -82,12 +92,6 @@ public class BoardsPageSteps
 		DesktopWebsite.boardsPage.backgroundSelectionButton.click();
 		
 		DesktopWebsite.boardsPage.createBoardButton.click();
-	}
-	
-	@Then ("^I will be on the new boards main page$")
-	public static void iWillBeOnTheNewBoardsMainPage()
-	{
-		DesktopWebsite.specificBoardsPage.addList.assertElementIsDisplayed();
 	}
 	
 	//delete board
@@ -142,11 +146,9 @@ public class BoardsPageSteps
 	}
 	
 	@Then ("^I click the Back to Home button$")
-	public static void iClickTheTrelloHomeButton() throws InterruptedException
+	public static void iClickTheTrelloHomeButton()
 	{
-		Thread.sleep(2000);
-		
-		DesktopWebsite.header.backToHome.click();
+		DesktopWebsite.header.backToHome.jsClick();
 	}
 	
 	@Then ("^I confirm the board is created$")
