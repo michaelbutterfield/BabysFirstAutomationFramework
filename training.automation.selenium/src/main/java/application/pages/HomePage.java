@@ -17,7 +17,7 @@ public class HomePage extends Page
 	
 	private void buildPage()
 	{
-		logIn = new Button(By.xpath( "/html/body/div[1]/div[2]/a[1]" ), "Login Button", name);
-		signUp = new Button(By.xpath( "/html/body/div[1]/div[2]/a[2]" ), "Sign Up Button", name);
+		logIn =		new Button(By.xpath( "/html/body/div[1]/div[2]/a[1]" ), "Login Button", name);
+		signUp =	new Button(By.xpath( "/html/body/div[1]/div[2]/a[2]" ), "Sign Up Button", name);
 	}
 }
