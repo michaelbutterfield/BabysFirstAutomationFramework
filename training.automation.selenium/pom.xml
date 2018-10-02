@@ -21,6 +21,9 @@
 		<testng.version>6.11</testng.version>
 		<browser>chrome</browser>
 		<applicationWebsite>http://www.trello.com/</applicationWebsite>
+		<email>michaelbutterf@gmail.com</email>
+		<password>automationtest23</password>
+		<boardName>TestBoard</boardName>
 </properties>
 
 	<build>
@@ -62,6 +65,9 @@
 					<systemPropertyVariables>
                         <browser>${browser}</browser>
                         <applicationWebsite>${applicationWebsite}</applicationWebsite>
+                        <email>${email}</email>
+						<password>${password}</password>
+						<boardName>${boardName}</boardName>
                     </systemPropertyVariables>
 				</configuration>
 			</plugin>
