@@ -11,6 +11,49 @@ import utilities.SeleniumDriverHelper;
 
 public class SpecificBoardPageSteps
 {
+	@And ("^I click and drag three cards from Done to Doing$")
+	public void iClickAndDragThreeCardsFromDoneToDoing()
+	{
+		//Move 0 to Doing
+		WebElement From = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[3]/div/div[2]/a[2]/div[3]/span"));
+		WebElement To = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[2]/div/div[1]/div[1]"));
+		Actions act = new Actions(SeleniumDriverHelper.getWebDriver());
+		act.dragAndDrop(From, To).build().perform();
+		
+		//Move 2 to Doing
+		From = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[3]/div/div[2]/a[2]/div[3]/span"));
+		act.dragAndDrop(From, To).build().perform();
+		
+		From = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[3]/div/div[2]/a[2]/div[3]/span"));
+		act.dragAndDrop(From, To).build().perform();
+	}
+	
+	@When ("^I click and drag three cards from To Do to Doing$")
+	public void iClickAndDragThreeCardsFromToDoToDoing()
+	{
+		//Move 0 to Doing
+		WebElement From = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[1]/div/div[2]/a[1]/div[3]/span"));
+		WebElement To = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[2]/div/div[1]/div[1]"));
+		Actions act = new Actions(SeleniumDriverHelper.getWebDriver());
+		act.dragAndDrop(From, To).build().perform();
+		
+		//Move 2 to Doing
+		From = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[1]/div/div[2]/a[2]/div[3]/span"));
+		act.dragAndDrop(From, To).build().perform();
+		
+		From = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[1]/div/div[2]/a[2]"));
+		act.dragAndDrop(From, To).build().perform();
+		
+//		try
+//		{
+//			Thread.sleep(10000);
+//		}
+//		catch(Exception e)
+//		{
+//			//eat exception
+//		}
+	}
+	
 	@When ("^I create three new lists called \"(.*?)\", \"(.*?)\" and \"(.*?)\" and add several cards to each$")
 	public void iCreateThreeNewListsCalledToDoDoingAndDoneAndAddSeveralCardsToEach(String toDo, String doing, String done)
 	{
@@ -74,55 +117,4 @@ public class SpecificBoardPageSteps
 		System.out.println("Successfully created Done and tasks 10-14");
 	}
 	
-	@When ("^I click and drag three cards from To Do to Doing$")
-	public void iClickAndDragThreeCardsFromToDoToDoing()
-	{
-		//Move 0 to Doing
-		WebElement From = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[1]/div/div[2]/a[1]/div[3]/span"));
-		WebElement To = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[2]/div/div[1]/div[1]"));
-		Actions act = new Actions(SeleniumDriverHelper.getWebDriver());
-		act.dragAndDrop(From, To).build().perform();
-		
-		//Move 2 to Doing
-		From = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[1]/div/div[2]/a[2]/div[3]/span"));
-		act.dragAndDrop(From, To).build().perform();
-		
-		From = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[1]/div/div[2]/a[2]"));
-		act.dragAndDrop(From, To).build().perform();
-		
-//		try
-//		{
-//			Thread.sleep(10000);
-//		}
-//		catch(Exception e)
-//		{
-//			//eat exception
-//		}
-	}
-	
-	@And ("^I click and drag three cards from Done to Doing$")
-	public void iClickAndDragThreeCardsFromDoneToDoing()
-	{
-		//Move 0 to Doing
-		WebElement From = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[3]/div/div[2]/a[2]/div[3]/span"));
-		WebElement To = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[2]/div/div[1]/div[1]"));
-		Actions act = new Actions(SeleniumDriverHelper.getWebDriver());
-		act.dragAndDrop(From, To).build().perform();
-		
-		//Move 2 to Doing
-		From = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[3]/div/div[2]/a[2]/div[3]/span"));
-		act.dragAndDrop(From, To).build().perform();
-		
-		From = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[3]/div/div[2]/a[2]/div[3]/span"));
-		act.dragAndDrop(From, To).build().perform();
-		
-		try
-		{
-			Thread.sleep(3000);
-		}
-		catch(Exception e)
-		{
-			//eat exception
-		}
-	}
 }
