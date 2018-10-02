@@ -16,6 +16,22 @@ public class LogInPageSteps
 			Assert.assertEquals(SeleniumDriverHelper.getWebDriver().getTitle(), "Log In | Trello");
 	}
 	
+	@Given ("^I set up the environment with \"(.*?)\" and \"(.*?)\"$")
+	public static void iSetUpTheEnvironmentWithEmailAndPassword(String email, String password)
+	{
+		DesktopWebsite.logInPage.createAnAccount.assertElementIsDisplayed();
+		
+		DesktopWebsite.logInPage.emailAddress.inputText(email);
+		
+		DesktopWebsite.logInPage.password.inputText(password);
+		
+		DesktopWebsite.logInPage.logInButton.click();
+		
+		DesktopWebsite.boardsPage.addButton.waitForElementToBeClickable();
+		
+		Assert.assertEquals(SeleniumDriverHelper.getWebDriver().getTitle(), "Boards | Trello");
+	}
+	
 	@When("^I enter \"(.*?)\" in the email field$")
 	public static void iEnterEmailInTheEmailField(String email)
 	{
