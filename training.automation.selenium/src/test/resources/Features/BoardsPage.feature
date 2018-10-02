@@ -6,7 +6,7 @@ Scenario: Clicking on the user board, adding lists (to do, doing, done) and addi
 
 Given I click on the user created board
 When I create three new lists called "To Do", "Doing" and "Done" and add several cards to each
-Then I click the Back to Home button
+Then the three boards lists and contents will be created
 
 @DragAndDropCard
 Scenario: Drag and drop a card to a new list
@@ -14,7 +14,7 @@ Scenario: Drag and drop a card to a new list
 Given I click on the user created board
 When I click and drag three cards from To Do to Doing
 And I click and drag three cards from Done to Doing
-Then I click the Back to Home button
+Then the cards are in their new lists
 
 @FavouriteBoard
 Scenario: Favourite a board
