@@ -55,9 +55,9 @@ public class Element
 	{
 		String assertionDescription = String.format("Assert Element '%1$s' on page '%2$s' is displayed", name, pageName);
 		
-		WebElement element = null;
-		
 		System.out.println(assertionDescription);
+		
+		WebElement element = null;
 		
 		try		
 		{
@@ -78,6 +78,7 @@ public class Element
 		String assertionDescription = String.format("Assert Element '%1$s' Text Contains '%2$s'", name, containsText);
 		
 		System.out.println(assertionDescription);
+		
 		try
 		{
 			String fullText = getElementText();					
