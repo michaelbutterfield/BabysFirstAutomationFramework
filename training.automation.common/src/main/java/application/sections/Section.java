@@ -4,8 +4,8 @@ public abstract class Section
 {
 	protected String name;
 	
-	protected Section(String name)
+	protected Section(String sectionName)
 	{
-		this.name = name;
+		name = sectionName;
 	}
 }
