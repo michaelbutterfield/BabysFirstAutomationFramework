@@ -1,6 +1,6 @@
 package utilities;
 
-import data.TrelloData;
+import data.TrelloApiData;
 import java.util.ArrayList;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -30,7 +30,7 @@ public class ApiHelper
 		
 		*/
 		
-		String create = String.format("/1/boards/?name=%1$s&desc=%2$s&key=%3$s&token=%4$s", boardName, boardDesc, TrelloData.getApiKey(), TrelloData.getApiToken());
+		String create = String.format("/1/boards/?name=%1$s&desc=%2$s&key=%3$s&token=%4$s", boardName, boardDesc, TrelloApiData.getApiKey(), TrelloApiData.getApiToken());
 		
 		Response createResponse = RestAssured.given().contentType("application/json\r\n").post(create);
 		
@@ -43,7 +43,7 @@ public class ApiHelper
 	{
 		RestAssured.baseURI = "https://api.trello.com";
 		
-		String delete = String.format("/1/boards/%1$s?key=%2$s&token=%3$s", boardId, TrelloData.getApiKey(), TrelloData.getApiToken());
+		String delete = String.format("/1/boards/%1$s?key=%2$s&token=%3$s", boardId, TrelloApiData.getApiKey(), TrelloApiData.getApiToken());
 		
 		Response deleteResponse = RestAssured.delete(delete);
 		
@@ -56,7 +56,7 @@ public class ApiHelper
 	{
 		RestAssured.baseURI = "https://api.trello.com";
 		
-		String getBoards = String.format("/1/search?query=%1$s&modelTypes=boards&board_fields=id&key=%2$s&token=%3$s", boardName, TrelloData.getApiKey(), TrelloData.getApiToken());
+		String getBoards = String.format("/1/search?query=%1$s&modelTypes=boards&board_fields=id&key=%2$s&token=%3$s", boardName, TrelloApiData.getApiKey(), TrelloApiData.getApiToken());
 		
 		Response boardResponse = RestAssured.get(getBoards);
 
