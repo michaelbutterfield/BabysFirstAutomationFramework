@@ -8,7 +8,6 @@ import application.pages.elements.selenium.Label;
 
 public class BoardsPage extends Page
 {
-	
 	public Button addButton;
 	public Button backgroundSelectionButton;
 	public Label boardNotFound;
@@ -16,6 +15,7 @@ public class BoardsPage extends Page
 	public Button createBoardButton;
 	public Button createNewBoardButton;
 	public Button favouriteButton;
+	public Button logOutButton;
 	public InputBox nameInput;
 	public Button userBoardButton;
 		
@@ -36,11 +36,8 @@ public class BoardsPage extends Page
 		createBoardButton = 		new Button(By.xpath("//*[@id=\"classic\"]/div[4]/div/div/div/form/button/span[2]"), "Create Board Button", name);
 		createNewBoardButton = 		new Button(By.xpath("//*[@id=\"classic\"]/div[5]/div/div[2]/div/div/div/ul/li[1]/a"), "Create Board... Button", name);
 		favouriteButton = 			new Button(By.xpath("//span[contains(@class, 'board-tile-options')]"), "Favourite Button", name);
+		logOutButton = 				new Button(By.xpath("//*[@id=\"classic\"]/div[5]/div/div[2]/div/div/div/ul[3]/li/a"), "Log Out Button", name);
 		nameInput = 				new InputBox(By.xpath("//*[@id=\"classic\"]/div[4]/div/div/div/form/div/div/div[1]/input"), "Board Name Input Box", name);
 		userBoardButton = 			new Button(By.xpath("//div[contains(@title, 'TestBoard')]"), "User Created Board", name);
-		
-		
-		
-		
 	}
 }
