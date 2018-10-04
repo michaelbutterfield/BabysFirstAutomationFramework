@@ -1,4 +1,4 @@
-@ContactPage
+@Contacts
 Feature: Contact Page
 
 @AddContact
