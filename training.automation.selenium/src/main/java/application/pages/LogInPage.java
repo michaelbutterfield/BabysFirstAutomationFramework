@@ -8,6 +8,7 @@ public class LogInPage extends Page
 {
 	public Link createAnAccount;
 	public InputBox emailAddress;
+	public Button giantTrelloImage;
 	public Button logInButton;
 	public InputBox password;
 	
@@ -21,6 +22,7 @@ public class LogInPage extends Page
 	{
 		createAnAccount =	new Link(By.xpath("//*[@id=\"signup\"]"), "Create An Account Link", name);
 		emailAddress =		new InputBox(By.xpath("//*[@id=\"user\"]"), "Email Address Input Box", name);
+		giantTrelloImage =	new Button(By.xpath("/html/body/div[1]/div[1]/a/img"), "Giant Trello image", name);
 		logInButton =		new Button(By.xpath("//*[@id=\"login\"]"), "Log In Button", name);
 		password =			new InputBox(By.xpath("//*[@id=\"password\"]"), "Password Input Box", name);
 	}
