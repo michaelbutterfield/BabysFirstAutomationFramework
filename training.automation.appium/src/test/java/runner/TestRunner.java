@@ -14,7 +14,7 @@ import utilities.AppiumDriverHelper;
 @CucumberOptions(
 		features =	{ "src/test/resources/Features" },
 		glue =		{ "stepdefinitions", "utilities", "runner" },
-		tags =		{ "@Calendar" }
+		tags =		{ "@Contacts" }
 				)
 
 public class TestRunner extends AbstractTestNGCucumberTests
