@@ -7,10 +7,9 @@ public final class DesktopWebsite
 {	
 	public static BoardsPage boardsPage;
 	public static Header header;
-	public static HomePage homePage;
+	public static SplashPage splashPage;
 	public static LogInPage logInPage;
 	public static SpecificBoardsPage specificBoardsPage;
-	
 	
 	static
 	{
@@ -21,7 +20,7 @@ public final class DesktopWebsite
 	private static void buildPages()
 	{
 		boardsPage = new BoardsPage();
-		homePage = new HomePage();
+		splashPage = new SplashPage();
 		logInPage = new LogInPage();
 		specificBoardsPage = new SpecificBoardsPage();
 	}
