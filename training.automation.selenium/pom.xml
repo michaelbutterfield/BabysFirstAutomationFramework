@@ -21,8 +21,6 @@
 		<testng.version>6.11</testng.version>
 		<browser>chrome</browser>
 		<applicationWebsite>http://www.trello.com/</applicationWebsite>
-		<email>michaelbutterf@gmail.com</email>
-		<password>automationtest23</password>
 		<boardName>TestBoard</boardName>
 </properties>
 
