@@ -118,7 +118,7 @@ public class Element
 	
 	public void jsClick()
 	{		
-		System.out.println(String.format("Clicking on Element '%1%s' on page '%2$s'", name, pageName));
+		System.out.println(String.format("Clicking on Element '%1$s' on page '%2$s'", name, pageName));
 		
 		JavascriptExecutor executor = (JavascriptExecutor) SeleniumDriverHelper.getWebDriver();
 		executor.executeScript("arguments[0].click();", getWebElement(true, true));
