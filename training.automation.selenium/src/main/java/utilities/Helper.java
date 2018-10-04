@@ -3,6 +3,7 @@ package utilities;
 import org.junit.Assert;
 
 import application.DesktopWebsite;
+import data.TrelloWebData;
 
 public class Helper
 {
@@ -12,9 +13,9 @@ public class Helper
 		
 		DesktopWebsite.logInPage.createAnAccount.assertElementIsDisplayed();
 		
-		DesktopWebsite.logInPage.emailAddress.inputText(email);
+		DesktopWebsite.logInPage.emailAddress.inputText(TrelloWebData.getUsername());
 		
-		DesktopWebsite.logInPage.password.inputText(password);
+		DesktopWebsite.logInPage.password.inputText(TrelloWebData.getPassword());
 		
 		DesktopWebsite.logInPage.logInButton.click();
 		
@@ -39,10 +40,9 @@ public class Helper
 		{
 			Thread.sleep(2000);
 		}
-		catch (InterruptedException e)
+		catch (Exception e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}
 		
 		DesktopWebsite.header.backToHome.jsClick();
@@ -52,6 +52,18 @@ public class Helper
 	
 	public static void DeleteBoard()
 	{
+		DesktopWebsite.header.backToHome.jsClick();
+		
+		//Allow home page to load before trying to click on anything		
+		try
+		{
+			Thread.sleep(3000);
+		}
+		catch (Exception e)
+		{
+		
+		}
+		
 		DesktopWebsite.boardsPage.userBoardButton.click();
 		
 		DesktopWebsite.specificBoardsPage.moreSideMenuButton.click();
