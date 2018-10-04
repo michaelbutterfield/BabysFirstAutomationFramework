@@ -92,6 +92,14 @@ public class BoardsPageSteps
 		DesktopWebsite.boardsPage.createBoardButton.click();
 	}
 	
+	@Then ("^I will be on the Trello user boards page$")
+	public static void iWillBeOnTheTrelloUserBoardsPage()
+	{
+		String stepDescription = ("Assert browser is currently on the Boards page");
+		
+		TestHelper.assertThat(SeleniumDriverHelper.getWebDriver().getTitle(), is("Boards | Trello"), stepDescription);
+	}
+	
 	@Then ("^The board will be favourited$")
 	public static void theBoardWillBeFavourited()
 	{
