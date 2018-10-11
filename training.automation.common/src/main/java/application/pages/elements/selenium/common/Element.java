@@ -126,6 +126,10 @@ public class Element
 	
 	public String getElementAttribute(String attributeName)
 	{
+		String assertionDescription = String.format("Getting attribute %1$s from element %2$s on page %3$s", attributeName.toUpperCase(), name, pageName);
+
+        System.out.println(assertionDescription);
+		
 		WebElement element = getWebElement(false, true);
 		return element.getAttribute(attributeName);
 	}
