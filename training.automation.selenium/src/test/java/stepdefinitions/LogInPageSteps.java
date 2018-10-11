@@ -78,6 +78,15 @@ public class LogInPageSteps
 	@Then ("^I will still be on the log in page$")
 	public static void iWillStillBeOnTheLogInPage()
 	{
+		try
+		{
+			Thread.sleep(3000);
+		}
+		catch (Exception e)
+		{
+			
+		}
+		
 		String stepDescription = ("Assert browser is currently on the log in page");
 		
 		TestHelper.assertThat(SeleniumDriverHelper.getWebDriver().getTitle(), is("Log in to Trello"), stepDescription);
