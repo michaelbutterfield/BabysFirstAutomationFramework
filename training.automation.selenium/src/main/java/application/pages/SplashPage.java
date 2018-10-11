@@ -4,14 +4,14 @@ import org.openqa.selenium.By;
 
 import application.pages.elements.selenium.*;
 
-public class HomePage extends Page
+public class SplashPage extends Page
 {
 	public Button logIn;
 	public Button signUp;
 	
-	public HomePage()
+	public SplashPage()
 	{
-		super("HomePage");
+		super("Splash Page");
 		buildPage();
 	}
 	
