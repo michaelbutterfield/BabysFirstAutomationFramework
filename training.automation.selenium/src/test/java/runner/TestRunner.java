@@ -5,9 +5,14 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
 import cucumber.api.CucumberOptions;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
+import tests.ScenarioHooks;
 import utilities.Helper;
 import utilities.SeleniumDriverHelper;
+import utilities.TestHelper;
 
 @CucumberOptions(
 		features =	{ "src/test/resources/Features" },
@@ -17,24 +22,34 @@ import utilities.SeleniumDriverHelper;
 					  "json:TestReports/cucumber.json", "html:target/resources/cucumber" })
 
 public class TestRunner extends AbstractTestNGCucumberTests
-{
-	
+{		
 	@BeforeTest
-	@Parameters( { "browser", "applicationWebsite", "email", "password", "boardName" } )
-	public void testSetup(String browser, String applicationWebsite, String email, String password, String boardName)
+	@Parameters( { "browser", "applicationWebsite", "boardName" } )
+	public void testSuiteSetup(String browser, String applicationWebsite, String boardName)
 	{
 		SeleniumDriverHelper.initialise(browser, applicationWebsite);
-		
-		Helper.LogIn(email, password);
-		
-		Helper.CreateBoard(boardName);
 	}
 	
 	@AfterTest (alwaysRun = true)
-	public void testTearDown()
+	public void testSuiteTearDown()
 	{
-		Helper.DeleteBoard();
+		if(TestHelper.scenarioHasTag("@BoardsPage"))
+		{
+			Helper.DeleteBoard();	
+		}
 		
 		SeleniumDriverHelper.getWebDriver().quit();
+	}
+	
+	@Before
+	public void before(Scenario scenario)
+	{
+		ScenarioHooks.scenarioSetup(scenario);
+	}
+	
+	@After
+	public void after()
+	{
+		
 	}
 }
