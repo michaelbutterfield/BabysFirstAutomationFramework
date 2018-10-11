@@ -9,8 +9,13 @@ import java.util.Date;
 import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
 
+import cucumber.api.Scenario;
+
+
 public final class TestHelper
-{		
+{
+	private static Scenario currentScenario;
+	
 	public static <T> void assertThat(T actual, Matcher<? super T> matcher, String stepDescription)
 	{
 		assertThat(actual, matcher, stepDescription, true);
@@ -31,12 +36,19 @@ public final class TestHelper
 		}
 	}
 	
-	public static double currencyToDouble(String currency)
+	public static String getFeatureFileNameFromScenario(Scenario scenario)
 	{
-		currency = currency.replaceAll("£", "");
-		currency = currency.replaceAll(",", "");
-		return Double.parseDouble(currency);
-	}	
+		String featureName = "";
+		String rawFeatureName = scenario.getId().split(";")[0].replace("-", " ");
+		featureName = "Here is the feature file name: " + featureName + rawFeatureName.substring(0, 1).toUpperCase() + rawFeatureName.substring(1);
+		
+		return featureName;
+	}
+	
+	public static Scenario getScenario()
+	{
+		return currentScenario;
+	}
 	
     public static String getTodaysDateTime(String format)
 	{
@@ -54,12 +66,7 @@ public final class TestHelper
 		
 		throw new RuntimeException(e.getMessage(), e.getCause());
 	}
-	
-	public static boolean isInCurrencyFormat(String text)
-	{
-		return text.trim().matches("^(-£|£-|£)[\\d]*\\.[\\d]{2}$");
-	}
-	
+
 	public static String removeNonAlphaNumericCharacters(String text)
 	{
 		return text.replaceAll("[^A-Za-z0-9]", "");
@@ -130,6 +137,16 @@ public final class TestHelper
 		return decimalFormat.format(value);	
 	}
 
+	public static Boolean scenarioHasTag(String tagName)
+	{
+		return getScenario().getSourceTagNames().contains(tagName);
+	}
+	
+	public static void setScenario(Scenario scenario)
+	{
+		currentScenario = scenario;
+	}
+	
 	public static void sleepInSeconds(int seconds)
 	{
 		try
