@@ -5,6 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import data.TrelloWebData;
 
 import static org.hamcrest.Matchers.is;
 
@@ -45,6 +46,47 @@ public class BoardsPageSteps
 	public static void iClickTheAddButtonInTheTopRight()
 	{
 		DesktopWebsite.boardsPage.addButton.click();
+	}
+	
+	@Given ("^I set up the environment with email and password and create the board")
+	public static void iSetUpTheEnvironmentWithEmailAndPasswordAndCreateTheBoard()
+	{
+		SeleniumDriverHelper.getWebDriver().get("http://www.trello.com/login");
+		
+		DesktopWebsite.logInPage.createAnAccount.assertElementIsDisplayed();
+		
+		DesktopWebsite.logInPage.emailAddress.inputText(TrelloWebData.getUsername());
+		
+		DesktopWebsite.logInPage.password.inputText(TrelloWebData.getPassword());
+		
+		DesktopWebsite.logInPage.logInButton.click();
+		
+		DesktopWebsite.boardsPage.addButton.waitForElementToBeClickable();
+		
+		TestHelper.assertThat(SeleniumDriverHelper.getWebDriver().getTitle(), is("Boards | Trello"), "Assert that the title of the web page '" + SeleniumDriverHelper.getWebDriver().getTitle() + "'" + " is equal to what is expected: 'Boards | Trello'");
+		
+		DesktopWebsite.boardsPage.addButton.click();
+		
+		DesktopWebsite.boardsPage.createNewBoardButton.click();
+		
+		DesktopWebsite.boardsPage.nameInput.inputText("TestBoard");
+		
+		DesktopWebsite.boardsPage.backgroundSelectionButton.click();
+		
+		DesktopWebsite.boardsPage.createBoardButton.click();
+		
+		try
+		{
+			Thread.sleep(2000);
+		}
+		catch (Exception e)
+		{
+
+		}
+		
+		DesktopWebsite.header.backToHome.jsClick();
+		
+		DesktopWebsite.boardsPage.userBoardButton.assertElementIsDisplayed();
 	}
 	
 	@When ("^I click the Create Board... option$")
@@ -95,7 +137,16 @@ public class BoardsPageSteps
 	@Then ("^I will be on the Trello user boards page$")
 	public static void iWillBeOnTheTrelloUserBoardsPage()
 	{
-		String stepDescription = ("Assert browser is currently on the Boards page");
+		try
+		{
+			Thread.sleep(3000);
+		}
+		catch (Exception e)
+		{
+			
+		}
+		
+		String stepDescription = "Assert that the title of the web page '" + SeleniumDriverHelper.getWebDriver().getTitle() + "'" + " is equal to what is expected: 'Boards | Trello'";
 		
 		TestHelper.assertThat(SeleniumDriverHelper.getWebDriver().getTitle(), is("Boards | Trello"), stepDescription);
 	}
@@ -103,7 +154,16 @@ public class BoardsPageSteps
 	@Then ("^The board will be favourited$")
 	public static void theBoardWillBeFavourited()
 	{
-		String boardIsStarred = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div/div/div/div/div[2]/div/div/div[1]/div/ul/li/a/div/div[2]/span/span")).getAttribute("class");
+		try
+		{
+			Thread.sleep(2000);
+		}
+		catch (Exception e)
+		{
+			
+		}
+		
+		String boardIsStarred = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div/div/div/div[2]/div/div/div[1]/div/ul/li/a/div/div[2]/span/span")).getAttribute("class");
 	
 		TestHelper.assertThat(boardIsStarred, is("icon-sm icon-star is-starred board-tile-options-star-icon"), "Assert that the board has been hovered over and the star clicked - making it a favourite board");
 	}
