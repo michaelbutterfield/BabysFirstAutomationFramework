@@ -22,8 +22,8 @@
 		<winium.driver.version>0.1.0-1</winium.driver.version>
 		<winium.element.version>0.2.0-1</winium.element.version>
 		<applicationPath>C:\\Windows\\System32\\calc.exe</applicationPath>
-		<!--  <applicationPath>C:\Program Files (x86)\Microsoft Office\root\Office16\WINWORD.EXE</applicationPath> -->
-		<winiumPath>C:\\Users\\michael.butterfield\\Documents\\C\\Babys First Automation Framework\\training.automation.winium\\Drivers\\Winium.Desktop.Driver.exe</winiumPath>
+		<!-- <applicationPath>C:\Program Files (x86)\Microsoft Office\root\Office16\WINWORD.EXE</applicationPath> -->
+		<!--  <winiumPath>C:\\Users\\michael.butterfield\\Documents\\C\\Babys First Automation Framework\\training.automation.winium\\Drivers\\Winium.Desktop.Driver.exe</winiumPath> -->
 		<winiumPort>9999</winiumPort>
 </properties>
 
