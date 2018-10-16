@@ -25,15 +25,10 @@ public class LogInPageSteps
 	public static void iSetUpTheEnvironmentWithEmailAndPassword(String email, String password)
 	{
 		DesktopWebsite.logInPage.createAnAccount.assertElementIsDisplayed();
-		
 		DesktopWebsite.logInPage.emailAddress.inputText(email);
-		
 		DesktopWebsite.logInPage.password.inputText(password);
-		
 		DesktopWebsite.logInPage.logInButton.click();
-		
-		DesktopWebsite.boardsPage.addButton.waitForElementToBeClickable();
-		
+		DesktopWebsite.header.addButton.waitForElementToBeClickable();
 		Assert.assertEquals(SeleniumDriverHelper.getWebDriver().getTitle(), "Boards | Trello");
 	}
 	
@@ -47,9 +42,7 @@ public class LogInPageSteps
 	public static void iEnterValidCredentials()
 	{
 		DesktopWebsite.logInPage.emailAddress.inputText(TrelloWebData.getUsername());
-		
 		DesktopWebsite.logInPage.password.inputText(TrelloWebData.getPassword());
-		
 		DesktopWebsite.logInPage.logInButton.click();
 	}
 	
@@ -57,9 +50,7 @@ public class LogInPageSteps
 	public static void iEnterInvalidCredentials()
 	{
 		DesktopWebsite.logInPage.emailAddress.inputText("wrongemail@email.com");
-		
 		DesktopWebsite.logInPage.password.inputText("password123");
-		
 		DesktopWebsite.logInPage.logInButton.click();
 	}
 	
@@ -88,7 +79,6 @@ public class LogInPageSteps
 		}
 		
 		String stepDescription = ("Assert browser is currently on the log in page");
-		
 		TestHelper.assertThat(SeleniumDriverHelper.getWebDriver().getTitle(), is("Log in to Trello"), stepDescription);
 	}
 }
