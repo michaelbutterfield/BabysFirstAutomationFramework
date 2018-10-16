@@ -36,15 +36,6 @@ public final class TestHelper
 		}
 	}
 	
-	public static String getFeatureFileNameFromScenario(Scenario scenario)
-	{
-		String featureName = "";
-		String rawFeatureName = scenario.getId().split(";")[0].replace("-", " ");
-		featureName = "Here is the feature file name: " + featureName + rawFeatureName.substring(0, 1).toUpperCase() + rawFeatureName.substring(1);
-		
-		return featureName;
-	}
-	
 	public static Scenario getScenario()
 	{
 		return currentScenario;
