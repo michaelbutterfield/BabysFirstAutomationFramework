@@ -29,27 +29,24 @@ public class SpecificBoardsPage extends Page
 
 	public SpecificBoardsPage()
 	{
-		super("SpecificBoardsPage");
+		super("Specific Boards Page");
 		buildPage();
 	}
 	
 	private void buildPage()
 	{
-		addACard =				new Button(By.xpath("//span[contains(@class,'js-add-a-card')]"), "Add a card", name);
-		addAnotherList =		new Button(By.xpath("//div[contains(text(),'Add another list')]"), "Add another list (used for adding any list after the first one)", name);
-		addAList =				new Button(By.xpath("//a[contains(@class,'open-add-list js-open-add-list')]"), "Add a list", name);
-		addCardButton =			new Button(By.xpath("//input[contains(@class,'primary confirm mod-compact js-add-card')]"), "Add Card Button", name);
-		addCardCancel =			new Button(By.xpath("//a[contains(@class,'icon-lg icon-close dark-hover js-cancel')]"), "Add a card", name);
-		addCardFirstCol =		new Button(By.xpath("//*[@id=\"board\"]/div[1]/div/a/span[2]"), "Add a card (First column)", name);
-		addCardSecondCol =		new Button(By.xpath("//*[@id=\"board\"]/div[2]/div/a/span[2]"), "Add a card (Second column)", name);
-		addCardThirdCol =		new Button(By.xpath("//*[@id=\"board\"]/div[3]/div/a/span[2]"), "Add a card (Second column)", name);
-		addListButton =			new Button(By.xpath("//input[contains(@class,'primary mod-list-add-button js-save-edit')]"), "Add List Confirmation Button", name);
-		closeBoard =			new Button(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div/div[2]/div/ul[3]/li/a"), "Close Board...", name);
-		closeBoardConfirmation =new Button(By.xpath("//*[@id=\"classic\"]/div[5]/div/div[2]/div/div/div/input"), "Confirm Close Board", name);
-		enterCardTitle =		new InputBox(By.xpath("//textarea[contains(@class, 'list-card-composer-textarea js-card-title')]"), "Entering card title", name);
-		enterListTitle =		new InputBox(By.xpath("//input[contains(@class,'list-name-input')]"), "Entering the list title", name);
-		moreSideMenuButton =	new Button(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div/div[2]/div/ul/li[5]/a"), "More Button in Side Menu", name);
-		permDeleteBoard =		new Link(By.xpath("//*[@id=\"content\"]/div/div/p[2]/a"), "Permanently Delete Board...", name);
-		permDeleteBoardConfirm =new Button(By.xpath("//*[@id=\"classic\"]/div[5]/div/div[2]/div/div/div/input"), "Yes, Permanently Delete Board.", name);
+		addACard = new Button(By.xpath("//span[@class='js-add-a-card']"), "Add a card", name);
+		addAnotherList = new Button(By.xpath("//span[text()='Add another list']"), "Add another list (used for adding any list after the first one)", name);
+		addAList = new Button(By.xpath("//span[text()='Add a list']"), "Add a list", name);
+		addCardButton = new Button(By.xpath("//input[@class='primary confirm mod-compact js-add-card'][@type='submit']"), "Add Card Button", name);
+		addCardCancel = new Button(By.xpath("//a[@class='icon-lg icon-close dark-hover js-cancel']"), "Add a card", name);
+		addListButton = new Button(By.xpath("//input[@class='primary mod-list-add-button js-save-edit']"), "Add List Confirmation Button", name);
+		closeBoard = new Button(By.xpath("//a[@class='board-menu-navigation-item-link js-close-board']"), "Close Board...", name);
+		closeBoardConfirmation = new Button(By.xpath("//input[@class='js-confirm full negate']"), "Confirm Close Board", name);
+		enterCardTitle = new InputBox(By.xpath("//textarea[@class='list-card-composer-textarea js-card-title']"), "Entering card title", name);
+		enterListTitle = new InputBox(By.xpath("//input[@class='list-name-input']"), "Entering the list title", name);
+		moreSideMenuButton = new Button(By.xpath("//a[@class='board-menu-navigation-item-link js-open-more']"), "More Button in Side Menu", name);
+		permDeleteBoard = new Link(By.xpath("//a[@class='quiet js-delete']"), "Permanently Delete Board...", name);
+		permDeleteBoardConfirm = new Button(By.xpath("//input[@class='js-confirm full negate']"), "Yes, Permanently Delete Board.", name);
 	}
 }
