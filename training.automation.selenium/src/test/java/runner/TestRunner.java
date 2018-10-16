@@ -33,10 +33,7 @@ public class TestRunner extends AbstractTestNGCucumberTests
 	@AfterTest (alwaysRun = true)
 	public void testSuiteTearDown()
 	{
-		if(TestHelper.scenarioHasTag("@BoardsPage"))
-		{
-			Helper.DeleteBoard();	
-		}
+		Helper.DeleteBoard();		
 		
 		SeleniumDriverHelper.getWebDriver().quit();
 	}
