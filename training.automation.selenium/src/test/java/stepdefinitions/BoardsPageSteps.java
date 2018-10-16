@@ -32,7 +32,6 @@ public class BoardsPageSteps
 		}
 		
 		Assert.assertEquals("Boards | Trello", SeleniumDriverHelper.getWebDriver().getTitle());
-		
 		System.out.println("Assert browser is currently on the Boards page");
 	}
 	
@@ -45,35 +44,24 @@ public class BoardsPageSteps
 	@Given ("^I click the add button in the top right")
 	public static void iClickTheAddButtonInTheTopRight()
 	{
-		DesktopWebsite.boardsPage.addButton.click();
+		DesktopWebsite.header.addButton.click();
 	}
 	
 	@Given ("^I set up the environment with email and password and create the board")
 	public static void iSetUpTheEnvironmentWithEmailAndPasswordAndCreateTheBoard()
 	{
 		SeleniumDriverHelper.getWebDriver().get("http://www.trello.com/login");
-		
 		DesktopWebsite.logInPage.createAnAccount.assertElementIsDisplayed();
-		
 		DesktopWebsite.logInPage.emailAddress.inputText(TrelloWebData.getUsername());
-		
 		DesktopWebsite.logInPage.password.inputText(TrelloWebData.getPassword());
-		
 		DesktopWebsite.logInPage.logInButton.click();
-		
-		DesktopWebsite.boardsPage.addButton.waitForElementToBeClickable();
-		
+		DesktopWebsite.header.addButton.waitForElementToBeClickable();
 		TestHelper.assertThat(SeleniumDriverHelper.getWebDriver().getTitle(), is("Boards | Trello"), "Assert that the title of the web page '" + SeleniumDriverHelper.getWebDriver().getTitle() + "'" + " is equal to what is expected: 'Boards | Trello'");
-		
-		DesktopWebsite.boardsPage.addButton.click();
-		
+		DesktopWebsite.header.addButton.click();
 		DesktopWebsite.boardsPage.createNewBoardButton.click();
-		
-		DesktopWebsite.boardsPage.nameInput.inputText("TestBoard");
-		
-		DesktopWebsite.boardsPage.backgroundSelectionButton.click();
-		
-		DesktopWebsite.boardsPage.createBoardButton.click();
+		DesktopWebsite.createBoardPage.nameInput.inputText("TestBoard");
+		DesktopWebsite.createBoardPage.backgroundSelectionButton.click();
+		DesktopWebsite.createBoardPage.createBoardButton.click();
 		
 		try
 		{
@@ -85,7 +73,6 @@ public class BoardsPageSteps
 		}
 		
 		DesktopWebsite.header.backToHome.jsClick();
-		
 		DesktopWebsite.boardsPage.userBoardButton.assertElementIsDisplayed();
 	}
 	
@@ -99,13 +86,9 @@ public class BoardsPageSteps
 	public static void iClickTheFavouriteBoardStar()
 	{
 		WebElement userBoard = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//div[contains(text(),'TestBoard')]"));
-		
 		Actions action = new Actions(SeleniumDriverHelper.getWebDriver());
-		
 		action.moveToElement(userBoard).perform();
-		
 		DesktopWebsite.boardsPage.favouriteButton.click();
-		
 		System.out.println("Successfully hovered over the user board and clicked favourite");
 		
 		try
@@ -127,11 +110,9 @@ public class BoardsPageSteps
 	@And ("^I create a new board with \"(.*?)\" and a background$")
 	public static void iCreateANewBoardWithNameAndABackground(String boardName)
 	{
-		DesktopWebsite.boardsPage.nameInput.inputText(boardName);
-		
-		DesktopWebsite.boardsPage.backgroundSelectionButton.click();
-		
-		DesktopWebsite.boardsPage.createBoardButton.click();
+		DesktopWebsite.createBoardPage.nameInput.inputText(boardName);
+		DesktopWebsite.createBoardPage.backgroundSelectionButton.click();
+		DesktopWebsite.createBoardPage.createBoardButton.click();
 	}
 	
 	@Then ("^I will be on the Trello user boards page$")
@@ -147,7 +128,6 @@ public class BoardsPageSteps
 		}
 		
 		String stepDescription = "Assert that the title of the web page '" + SeleniumDriverHelper.getWebDriver().getTitle() + "'" + " is equal to what is expected: 'Boards | Trello'";
-		
 		TestHelper.assertThat(SeleniumDriverHelper.getWebDriver().getTitle(), is("Boards | Trello"), stepDescription);
 	}
 	
@@ -164,7 +144,6 @@ public class BoardsPageSteps
 		}
 		
 		String boardIsStarred = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div/div/div/div[2]/div/div/div[1]/div/ul/li/a/div/div[2]/span/span")).getAttribute("class");
-	
 		TestHelper.assertThat(boardIsStarred, is("icon-sm icon-star is-starred board-tile-options-star-icon"), "Assert that the board has been hovered over and the star clicked - making it a favourite board");
 	}
 	
