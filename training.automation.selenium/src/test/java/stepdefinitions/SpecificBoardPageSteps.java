@@ -117,7 +117,6 @@ public class SpecificBoardPageSteps
 	public static void iConfirmThePermanentDeletionOfTheBoard()
 	{
 		DesktopWebsite.specificBoardsPage.permDeleteBoard.click();
-	
 		DesktopWebsite.specificBoardsPage.permDeleteBoardConfirm.click();
 	}
 	
