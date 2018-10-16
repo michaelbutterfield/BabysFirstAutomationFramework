@@ -8,7 +8,9 @@ import application.pages.elements.selenium.Image;
 public class Header extends Section
 {
 	public Button accountAvatar;
+	public Button addButton;
 	public Image backToHome;
+	public Button logOutButton;
 	public Image trelloLogoHome;
 	
 	public Header()
@@ -19,8 +21,10 @@ public class Header extends Section
 	
 	private void buildSections()
 	{
-		accountAvatar	= new Button(By.xpath("//*[@id=\"header\"]/div[5]/a[4]/span"), "Account Avatar button", name);
-		backToHome		= new Image(By.xpath("//*[@id=\"header\"]/div[1]/a"), "Home Icon in Top Left", name);
-		trelloLogoHome	= new Image(By.xpath("//*[@id=\"header\"]/a/span[2]"), "Trello Logo Home Button", name);
+		accountAvatar	= new Button(By.xpath("//span[@class='member-initials']"), "Account Avatar button", name);
+		addButton 		= new Button(By.xpath("//span[@class=\"header-btn-icon icon-lg icon-add light\"]"), "Add Button", name);
+		backToHome		= new Image(By.xpath("//span[@class='header-btn-icon icon-lg icon-house light']"), "Home Icon in Top Left", name);
+		logOutButton 	= new Button(By.xpath("//a[@class='js-logout']"), "Log Out Button", name);
+		trelloLogoHome	= new Image(By.xpath("//span[@class='header-logo-default']"), "Trello Logo Home Button", name);
 	}
 }
