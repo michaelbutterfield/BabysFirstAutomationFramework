@@ -42,57 +42,42 @@ public class SpecificBoardPageSteps
 	public void iCreateThreeNewListsCalledToDoDoingAndDoneAndAddSeveralCardsToEach(String toDo, String doing, String done)
 	{		
 		DesktopWebsite.specificBoardsPage.addAList.click();
-		
 		DesktopWebsite.specificBoardsPage.enterListTitle.inputText(toDo);
-		
 		DesktopWebsite.specificBoardsPage.addListButton.click();
-		
 		DesktopWebsite.specificBoardsPage.addACard.click();
 		
 		for(int i = 0; i < 5; i++)
 		{
 			String testText = String.format("Test Text Placeholder %1$s", i);
-			
 			DesktopWebsite.specificBoardsPage.enterCardTitle.inputText(testText);
-			
 			DesktopWebsite.specificBoardsPage.addCardButton.click();
 		}
 		
 		System.out.println("Successfully created To Do and tasks 0-4");
 		
 		//Doing
-		
 		DesktopWebsite.specificBoardsPage.enterListTitle.inputText(doing);
-		
 		DesktopWebsite.specificBoardsPage.addListButton.click();
-		
-		DesktopWebsite.specificBoardsPage.addCardSecondCol.click();
+		DesktopWebsite.specificBoardsPage.addACard.click();
 		
 		for(int i = 5; i < 10; i++)
 		{
 			String testText = String.format("Test Text Placeholder %1$s", i);
-			
 			DesktopWebsite.specificBoardsPage.enterCardTitle.inputText(testText);
-			
 			DesktopWebsite.specificBoardsPage.addCardButton.click();
 		}
 		
 		System.out.println("Successfully created 'Doing' and tasks 5-9");
 		
 		//Done
-		
 		DesktopWebsite.specificBoardsPage.enterListTitle.inputText(done);
-		
 		DesktopWebsite.specificBoardsPage.addListButton.click();
-		
-		DesktopWebsite.specificBoardsPage.addCardThirdCol.click();
+		DesktopWebsite.specificBoardsPage.addACard.click();
 		
 		for(int i = 10; i < 15; i++)
 		{
 			String testText = String.format("Test Text Placeholder %1$s", i);
-			
 			DesktopWebsite.specificBoardsPage.enterCardTitle.inputText(testText);
-			
 			DesktopWebsite.specificBoardsPage.addCardButton.click();
 		}
 		
@@ -159,17 +144,17 @@ public class SpecificBoardPageSteps
 	@Then ("^the three boards lists and contents will be created$")
 	public void theThreeBoardsListsAndContentsWillBeCreated()
 	{
-		String toDoLabel = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[1]/div/div[1]/textarea")).getAttribute("aria-label");
-		String doingLabel = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[2]/div/div[1]/textarea")).getAttribute("aria-label");
-		String doneLabel = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[3]/div/div[1]/textarea")).getAttribute("aria-label");
+		String toDoLabel = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//textarea[@class='list-header-name mod-list-name js-list-name-input'][@aria-label='To Do']")).getAttribute("aria-label");
+		String doingLabel = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//textarea[@class='list-header-name mod-list-name js-list-name-input'][@aria-label='Doing']")).getAttribute("aria-label");
+		String doneLabel = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//textarea[@class='list-header-name mod-list-name js-list-name-input'][@aria-label='Done']")).getAttribute("aria-label");
 		
 		TestHelper.assertThat(toDoLabel, is("To Do"), "Assert that 'To Do' is created and visible");
 		TestHelper.assertThat(doingLabel, is("Doing"), "Assert that 'Doing' is created and visible");
 		TestHelper.assertThat(doneLabel, is("Done"), "Assert that 'Done' is created and visible");
 		
-		String toDoFinalCard = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[1]/div/div[2]/a[5]/div[3]/span")).getText();
-		String doingFinalCard = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[2]/div/div[2]/a[5]/div[3]/span")).getText();
-		String doneFinalCard = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//*[@id=\"board\"]/div[3]/div/div[2]/a[5]/div[3]/span")).getText();
+		String toDoFinalCard = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//span[@class='list-card-title js-card-name'][text()='Test Text Placeholder 4']")).getText();
+		String doingFinalCard = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//span[@class='list-card-title js-card-name'][text()='Test Text Placeholder 9']")).getText();
+		String doneFinalCard = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//span[@class='list-card-title js-card-name'][text()='Test Text Placeholder 14']")).getText();
 		
 		TestHelper.assertThat(toDoFinalCard, is("Test Text Placeholder 4"), "Assert that 'Test Text Placeholder 4' is created and visible/clickable - all cards in the first list have been created successfully");
 		TestHelper.assertThat(doingFinalCard, is("Test Text Placeholder 9"), "Assert that 'Test Text Placeholder 9' is created and visible/clickable - all cards in the first list have been created successfully");
