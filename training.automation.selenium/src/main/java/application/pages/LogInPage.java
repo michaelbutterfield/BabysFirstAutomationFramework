@@ -14,16 +14,16 @@ public class LogInPage extends Page
 	
 	public LogInPage()
 	{
-		super("LogInPage");
+		super("Log In Page");
 		buildPage();
 	}
 	
 	private void buildPage()
 	{
-		createAnAccount =	new Link(By.xpath("//*[@id=\"signup\"]"), "Create An Account Link", name);
-		emailAddress =		new InputBox(By.xpath("//*[@id=\"user\"]"), "Email Address Input Box", name);
-		giantTrelloImage =	new Button(By.xpath("/html/body/div[1]/div[1]/a/img"), "Giant Trello image", name);
-		logInButton =		new Button(By.xpath("//*[@id=\"login\"]"), "Log In Button", name);
-		password =			new InputBox(By.xpath("//*[@id=\"password\"]"), "Password Input Box", name);
+		createAnAccount = new Link(By.xpath("//*[@id=\"signup\"]"), "Create An Account Link", name);
+		emailAddress = new InputBox(By.xpath("//*[@id=\"user\"]"), "Email Address Input Box", name);
+		giantTrelloImage = new Button(By.xpath("//img[@alt='Home']"), "Giant Trello image", name);
+		logInButton = new Button(By.xpath("//*[@id=\"login\"]"), "Log In Button", name);
+		password = new InputBox(By.xpath("//*[@id=\"password\"]"), "Password Input Box", name);
 	}
 }
