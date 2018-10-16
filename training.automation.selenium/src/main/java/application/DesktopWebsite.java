@@ -6,10 +6,12 @@ import application.sections.*;
 public final class DesktopWebsite
 {	
 	public static BoardsPage boardsPage;
+	public static CreateBoardPage createBoardPage;
 	public static Header header;
-	public static SplashPage splashPage;
 	public static LogInPage logInPage;
 	public static SpecificBoardsPage specificBoardsPage;
+	public static SplashPage splashPage;
+
 	
 	static
 	{
@@ -20,9 +22,10 @@ public final class DesktopWebsite
 	private static void buildPages()
 	{
 		boardsPage = new BoardsPage();
-		splashPage = new SplashPage();
+		createBoardPage = new CreateBoardPage();
 		logInPage = new LogInPage();
 		specificBoardsPage = new SpecificBoardsPage();
+		splashPage = new SplashPage();
 	}
 	
 	private static void buildSections()
