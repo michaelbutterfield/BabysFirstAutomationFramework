@@ -18,19 +18,12 @@ public class Helper
 		}
 		
 		DesktopWebsite.boardsPage.userBoardButton.click();
-		
 		DesktopWebsite.specificBoardsPage.moreSideMenuButton.click();
-		
 		DesktopWebsite.specificBoardsPage.closeBoard.click();
-		
 		DesktopWebsite.specificBoardsPage.closeBoardConfirmation.click();
-		
 		DesktopWebsite.specificBoardsPage.permDeleteBoard.click();
-		
 		DesktopWebsite.specificBoardsPage.permDeleteBoardConfirm.click();
-		
 		DesktopWebsite.boardsPage.boardNotFound.assertElementTextContains("Board not found.");
-		
 		DesktopWebsite.header.trelloLogoHome.click();
 	}
 }
