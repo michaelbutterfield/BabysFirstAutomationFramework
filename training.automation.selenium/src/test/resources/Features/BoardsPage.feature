@@ -4,9 +4,8 @@ Feature: Boards Page
 @AddingListsAndCards
 Scenario: Clicking on the user board, adding lists (to do, doing, done) and adding cards
 
-Given I set up the environment with email and password and create the board
-When I click on the user created board
-And I create three new lists called "To Do", "Doing" and "Done" and add several cards to each
+Given I click on the user created board
+When I create three new lists called "To Do", "Doing" and "Done" and add several cards to each
 Then the three boards lists and contents will be created
 
 @DragAndDropCard
