@@ -10,9 +10,9 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import tests.ScenarioHooks;
+import tests.TestLogger;
 import utilities.Helper;
 import utilities.SeleniumDriverHelper;
-import utilities.TestHelper;
 
 @CucumberOptions(
 		features =	{ "src/test/resources/Features" },
@@ -27,26 +27,42 @@ public class TestRunner extends AbstractTestNGCucumberTests
 	@Parameters( { "browser", "applicationWebsite", "boardName" } )
 	public void testSuiteSetup(String browser, String applicationWebsite, String boardName)
 	{
+		TestLogger.logSuiteSetupStart();
+		
 		SeleniumDriverHelper.initialise(browser, applicationWebsite);
+		
+		Helper.LogInCreateBoard();
+		
+		TestLogger.logSuiteSetupEnd();
 	}
 	
 	@AfterTest (alwaysRun = true)
 	public void testSuiteTearDown()
 	{
+		TestLogger.logSuiteTeardownStart();
+		
 		Helper.DeleteBoard();		
 		
 		SeleniumDriverHelper.getWebDriver().quit();
+		
+		TestLogger.logSuiteTeardownEnd();
+		
+		TestLogger.close();
 	}
 	
 	@Before
 	public void before(Scenario scenario)
 	{
 		ScenarioHooks.scenarioSetup(scenario);
+		
+		TestLogger.logScenarioStart();
 	}
 	
 	@After
 	public void after()
 	{
+		TestLogger.logScenarioEnd();
 		
+		TestLogger.logTestResult();
 	}
 }
