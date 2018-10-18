@@ -47,11 +47,10 @@ public class BoardsPageSteps
 		DesktopWebsite.header.addButton.click();
 	}
 	
-	@Given ("^I set up the environment with email and password and create the board")
+	@Given ("^I set up the environment with email and password and create the board$")
 	public static void iSetUpTheEnvironmentWithEmailAndPasswordAndCreateTheBoard()
 	{
-		SeleniumDriverHelper.getWebDriver().get("http://www.trello.com/login");
-		DesktopWebsite.logInPage.createAnAccount.assertElementIsDisplayed();
+		DesktopWebsite.splashPage.logIn.click();
 		DesktopWebsite.logInPage.emailAddress.inputText(TrelloWebData.getUsername());
 		DesktopWebsite.logInPage.password.inputText(TrelloWebData.getPassword());
 		DesktopWebsite.logInPage.logInButton.click();
@@ -89,16 +88,6 @@ public class BoardsPageSteps
 		Actions action = new Actions(SeleniumDriverHelper.getWebDriver());
 		action.moveToElement(userBoard).perform();
 		DesktopWebsite.boardsPage.favouriteButton.click();
-		System.out.println("Successfully hovered over the user board and clicked favourite");
-		
-		try
-		{
-			Thread.sleep(3000);
-		}
-		catch(Exception e)
-		{
-			//eat exception
-		}
 	}
 
 	@And ("^I confirm the board is no longer there$")
