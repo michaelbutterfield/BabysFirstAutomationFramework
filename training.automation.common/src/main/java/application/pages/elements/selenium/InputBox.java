@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import application.pages.elements.selenium.common.Element;
+import tests.TestLogger;
 
 public class InputBox extends Element
 {
@@ -32,9 +33,9 @@ public class InputBox extends Element
 	
 	public void inputText(String text)
 	{
-        String testStepDescription = String.format("'Input Text' \"%1$s\" into element '%2$s' on page '%3$s' ", text, name, pageName);        
+        String testStepDescription = String.format("Input Text '%1$s' into", text);        
 
-        System.out.println(testStepDescription);
+        TestLogger.createTestStep(testStepDescription, name, pageName);
         
 		try
 		{
