@@ -16,7 +16,6 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 public class TestRunner extends AbstractTestNGCucumberTests
 {
-	
 	@BeforeTest
 	@Parameters( { "baseUri" } )
 	public void testSetup(String baseUri)
