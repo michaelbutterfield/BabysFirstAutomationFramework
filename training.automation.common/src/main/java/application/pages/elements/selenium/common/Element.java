@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import tests.TestLogger;
 import utilities.TestHelper;
 import utilities.SeleniumDriverHelper;
 
@@ -55,7 +56,7 @@ public class Element
 	{
 		String assertionDescription = String.format("Assert Element '%1$s' on page '%2$s' is displayed", name, pageName);
 		
-		System.out.println(assertionDescription);
+		TestLogger.createTestStep("Assert Element is Displayed,", name, pageName);
 		
 		WebElement element = null;
 		
@@ -75,9 +76,10 @@ public class Element
 	
 	public void assertElementTextContains(String containsText)
 	{
-		String assertionDescription = String.format("Assert Element '%1$s' Text Contains '%2$s'", name, containsText);
-		
-		System.out.println(assertionDescription);
+	
+		String assertionDescription = String.format("Assert Element Text Contains '%1$s'", containsText);
+	
+		TestLogger.createTestStep(assertionDescription, name, pageName);
 		
 		try
 		{
@@ -92,7 +94,7 @@ public class Element
 	
 	public void click()
 	{
-		System.out.println(String.format("Clicking on Element '%1$s' on page '%2$s'", name, pageName));
+		TestLogger.createTestStep("Click", name, pageName);
 		
 		try
 		{
@@ -118,7 +120,7 @@ public class Element
 	
 	public void jsClick()
 	{		
-		System.out.println(String.format("Clicking on Element '%1$s' on page '%2$s'", name, pageName));
+		TestLogger.createTestStep("Javascript Click", name, pageName);
 		
 		JavascriptExecutor executor = (JavascriptExecutor) SeleniumDriverHelper.getWebDriver();
 		executor.executeScript("arguments[0].click();", getWebElement(true, true));
@@ -126,11 +128,14 @@ public class Element
 	
 	public String getElementAttribute(String attributeName)
 	{
-		String assertionDescription = String.format("Getting attribute %1$s from element %2$s on page %3$s", attributeName.toUpperCase(), name, pageName);
-
-        System.out.println(assertionDescription);
+		String assertionDescription = String.format("Getting attribute '%1$s' from element '%2$s' on page '%3$s'", attributeName.toUpperCase(), name, pageName);
+			
+		String action = String.format("Getting attribute '%1$s' from", attributeName.toUpperCase());
+		
+		TestLogger.createTestStep(action, name, pageName);
 		
 		WebElement element = getWebElement(false, true);
+		
 		return element.getAttribute(attributeName);
 	}
 	
