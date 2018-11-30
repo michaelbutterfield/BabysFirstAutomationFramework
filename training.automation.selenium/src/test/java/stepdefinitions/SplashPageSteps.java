@@ -8,8 +8,8 @@ import utilities.SeleniumDriverHelper;
 
 public class SplashPageSteps
 {	
-	@Given("^I am on the Trello splash page$")
-	public static void iAmOnTheTrelloSplashPage()
+	@Given("^I was on the Trello splash page$")
+	public static void iWasOnTheTrelloSplashPage()
 	{
 		try
 		{
@@ -45,8 +45,8 @@ public class SplashPageSteps
 		}
 	}
 	
-	@Given("^I click the log in button on the splash page$")
-	public static void iClickOnTheLogInButtonOnTheSplashPage()
+	@Given("^I clicked the log in button on the splash page$")
+	public static void iClickedOnTheLogInButtonOnTheSplashPage()
 	{
 		DesktopWebsite.splashPage.logIn.click();
 	}

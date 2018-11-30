@@ -20,7 +20,6 @@ public class CalendarSteps
 	public void iClickTheNewEventButton()
 	{
 		MobileApp.topCalendarNavigationBar.add.assertElementExists();
-		
 		MobileApp.topCalendarNavigationBar.add.click();
 	}
 
@@ -28,7 +27,6 @@ public class CalendarSteps
 	public void iEnterATitle()
 	{
 		MobileApp.newCalendarEventPage.title.assertElementExists();
-		
 		MobileApp.newCalendarEventPage.title.inputText("test test 123");
 	}
 	
@@ -36,13 +34,9 @@ public class CalendarSteps
 	public void iEnterALocation()
 	{
 		MobileApp.newCalendarEventPage.location.assertElementExists();
-		
 		MobileApp.newCalendarEventPage.location.click();
-		
 		MobileApp.newCalendarEventPage.location.inputText("Preston, England");
-		
 		MobileApp.newCalendarEventPage.locationSpecific.assertElementExists();
-		
 		MobileApp.newCalendarEventPage.locationSpecific.click();
 	}
 	
@@ -50,11 +44,8 @@ public class CalendarSteps
 	public void iEnterARepeat()
 	{
 		MobileApp.newCalendarEventPage.repeats.assertElementExists();
-		
 		MobileApp.newCalendarEventPage.repeats.click();
-		
 		MobileApp.newCalendarEventPage.repeatEveryWeek.assertElementExists();
-		
 		MobileApp.newCalendarEventPage.repeatEveryWeek.click();
 	}
 
@@ -62,11 +53,8 @@ public class CalendarSteps
 	public void iEnterANote()
 	{
 		TouchAction ta = new TouchAction(AppiumDriverHelper.getDriver());
-		
 		ta.longPress(422, 363).moveTo(422, 63).release().perform();
-		
 		MobileApp.newCalendarEventPage.notesInput.inputText("john sucks lol");
-		
 		MobileApp.newCalendarEventPage.add.click();
 	}
 	

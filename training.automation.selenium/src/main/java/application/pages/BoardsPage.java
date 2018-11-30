@@ -20,9 +20,9 @@ public class BoardsPage extends Page
 	
 	private void buildPage()
 	{
-		boardNotFound = new Label(By.xpath("//h1[contains(text(),'Board not found.')]"), "Board not found. message", name);
-		createNewBoardButton = new Button(By.xpath("//a[@class=\"js-new-board\"]"), "Create Board... Button", name);
-		favouriteButton = new Button(By.xpath("//span[@class='icon-sm icon-star board-tile-options-star-icon']"), "Favourite Button", name);
-		userBoardButton = new Button(By.xpath("//div[@title='TestBoard']"), "User Created Board", name);
+		boardNotFound 			= new Label(By.xpath("//h1[contains(text(),'Board not found.')]"), "Board not found. message", name);
+		createNewBoardButton	= new Button(By.xpath("//a[@class=\"js-new-board\"]"), "Create Board... Button", name);
+		favouriteButton 		= new Button(By.xpath("//span[@class='icon-sm icon-star board-tile-options-star-icon']"), "Favourite Button", name);
+		userBoardButton 		= new Button(By.xpath("//div[@title='TestBoard']"), "User Created Board", name);
 	}
 }

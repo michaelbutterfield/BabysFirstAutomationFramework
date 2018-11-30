@@ -9,37 +9,29 @@ import utilities.WiniumDriverHelper;
 
 public class CalculatorSteps
 {
-	@Given ("^the calculator is open$")
-	public void theCalculatorIsOpen()
+	@Given ("^the calculator was open$")
+	public void theCalculatorWasOpen()
 	{
-		DesktopApplication.mainPage.positiveNegative.assertExists();
-				
+		DesktopApplication.mainPage.positiveNegative.assertExists();	
 		System.out.println("Application 'Calculator' is open");
 	}
 	
-	@Given ("^I change the calculator to scientific$")
-	public void iChangeTheCalculatorToScientific()
+	@Given ("^I changed the calculator to scientific$")
+	public void iChangedTheCalculatorToScientific()
 	{
 		DesktopApplication.mainPage.openNavigation.assertExists();
-		
 		DesktopApplication.mainPage.openNavigation.click();
-		
 		DesktopApplication.mainPage.scientificCalculator.assertExists();
-		
 		DesktopApplication.mainPage.scientificCalculator.click();
 	}
 	
-	@Given ("^the calculator is in standard mode$")
-	public void theCalculatorIsInStandardMode()
+	@Given ("^the calculator was in standard mode$")
+	public void theCalculatorWasInStandardMode()
 	{
 		DesktopApplication.mainPage.openNavigation.assertExists();
-		
 		DesktopApplication.mainPage.openNavigation.click();
-		
 		DesktopApplication.mainPage.standardCalculator.assertExists();
-		
 		DesktopApplication.mainPage.standardCalculator.click();
-		
 		DesktopApplication.mainPage.equals.click();
 		
 		try

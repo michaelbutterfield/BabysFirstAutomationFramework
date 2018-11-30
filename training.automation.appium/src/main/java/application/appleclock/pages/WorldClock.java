@@ -20,7 +20,7 @@ public class WorldClock extends Page
 	private void buildPage()
 	{
 		add = new Button(By.name("Add"), "World Clock Add Button", name);
-		edit = new Button(By.name("Edit"), "World Clock Edit Button", name);
 		done = new Button(By.name("Done"), "World Clock Done Button", name);
+		edit = new Button(By.name("Edit"), "World Clock Edit Button", name);
 	}
 }

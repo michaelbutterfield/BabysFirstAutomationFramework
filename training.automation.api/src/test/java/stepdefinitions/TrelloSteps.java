@@ -9,7 +9,6 @@ public class TrelloSteps
 	public static void theApiCallResponseIsCorrect()
 	{
 		ApiHelper.createTrelloBoard("my Api Test Board", "Created using the Trello API calls");
-				
 		ApiHelper.deleteTrelloBoard(ApiHelper.getTrelloBoardId("my Api Test Board"));
 	}
 }

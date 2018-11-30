@@ -11,7 +11,7 @@ import utilities.WiniumDriverHelper;
 @CucumberOptions(
 		features =	{ "src/test/resources/Features" },
 		glue =		{ "stepdefinitions", "utilities", "runner" },
-		tags =		{ "@Calculator" }
+		tags =		{ "@Word" }
 				)
 
 public class TestRunner extends AbstractTestNGCucumberTests

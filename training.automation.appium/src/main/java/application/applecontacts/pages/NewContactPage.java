@@ -21,9 +21,9 @@ public class NewContactPage extends Page
 
 	private void buildPage()
 	{
+		done = new Button(By.name("Done"), "Done", name);
 		firstName = new InputBox(By.name("First name"), "First Name", name);
 		lastName = new InputBox(By.name("Last name"), "name", "Last Name", name);
 		phoneNumber = new InputBox(By.name("add phone"), "name", "Phone", name);
-		done = new Button(By.name("Done"), "Done", name);
 	}
 }

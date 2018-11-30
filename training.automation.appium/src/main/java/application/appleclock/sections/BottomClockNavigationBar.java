@@ -20,9 +20,9 @@ public class BottomClockNavigationBar extends Section
 	
 	private void buildSection()
 	{
-		worldClock =	new Button(By.name("World Clock"), "World Clock Navigation Button", name);
 		alarm =			new Button(By.name("Alarm"), "Alarm Navigation Button", name);
 		stopwatch = 	new Button(By.name("Stopwatch"), "Stopwatch Navigation Button", name);
 		timer = 		new Button(By.name("Timer"), "Timer Navigation Button", name);
+		worldClock =	new Button(By.name("World Clock"), "World Clock Navigation Button", name);
 	}
 }
