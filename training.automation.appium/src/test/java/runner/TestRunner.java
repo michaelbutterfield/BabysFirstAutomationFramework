@@ -32,11 +32,8 @@ public class TestRunner extends AbstractTestNGCucumberTests
 	public void testSuiteSetup(String iPadName, String appiumServerIP, String appiumServerPort, String appiumPort, String bundleId)
 	{
 		AppiumServerManager.setAppiumServerDetails(appiumServerIP, appiumServerPort);
-
 		AppiumServerManager.setAppiumPort(appiumPort);
-
 		AppiumServerManager.start();
-
 		AppiumDriverHelper.launchApplication(appiumServerIP, appiumPort, DeviceDetails.getCapabilities(iPadName, bundleId));
 	}
 	
