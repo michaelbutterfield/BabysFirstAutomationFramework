@@ -130,9 +130,7 @@ public class Element
 	{
 		String assertionDescription = String.format("Getting attribute '%1$s' from element '%2$s' on page '%3$s'", attributeName.toUpperCase(), name, pageName);
 			
-		String action = String.format("Getting attribute '%1$s' from", attributeName.toUpperCase());
-		
-		TestLogger.createTestStep(action, name, pageName);
+		TestLogger.createTestStep(assertionDescription, name, pageName);
 		
 		WebElement element = getWebElement(false, true);
 		
