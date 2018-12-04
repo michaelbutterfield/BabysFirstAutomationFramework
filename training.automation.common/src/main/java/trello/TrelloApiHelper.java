@@ -54,6 +54,19 @@ public class TrelloApiHelper extends ApiHelper
 		TestHelper.assertThat(deleteResponse.statusCode(), is(equalTo(200)), ("Assert that board was deleted successfully: " + deleteResponse.statusCode() + " = " + "200"));
 	}
 	
+	public static TrelloListData getBoardLists(String boardId)
+	{
+		RestAssured.baseURI = "https://api.trello.com";
+		
+		String getLists = String.format("https://api.trello.com/1/boards/{0}?fields=id,name&lists=open&list_fields=id,name,closed,pos&key={1}&token={2}", boardId, TrelloApiData.getApiKey(), TrelloApiData.getApiToken());
+		
+		Response res = RestAssured.get(getLists);
+		
+		TrelloListData boardLists = res.getBody().as(TrelloListData.class);
+		
+		return boardLists;
+	}
+	
 	public static String getTrelloBoardId(String boardName)
 	{
 		RestAssured.baseURI = "https://api.trello.com";
@@ -66,4 +79,6 @@ public class TrelloApiHelper extends ApiHelper
 		
 		return board.toString().replaceAll("\\[", "").replaceAll("\\]", "");
 	}
+	
+
 }
