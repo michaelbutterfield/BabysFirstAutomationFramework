@@ -3,7 +3,7 @@ package utilities;
 import static org.hamcrest.Matchers.is;
 
 import application.DesktopWebsite;
-import data.TrelloWebData;
+import trello.TrelloWebData;
 
 public class Helper
 {
