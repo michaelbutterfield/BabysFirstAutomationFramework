@@ -29,9 +29,7 @@ public class TestRunner extends AbstractTestNGCucumberTests
 	{
 		TestLogger.logSuiteSetupStart();
 		
-		SeleniumDriverHelper.initialise(browser, applicationWebsite);
-		
-		Helper.LogInCreateBoard();
+		System.out.println("welp");
 		
 		TestLogger.logSuiteSetupEnd();
 	}
@@ -53,7 +51,13 @@ public class TestRunner extends AbstractTestNGCucumberTests
 	@Before
 	public void before(Scenario scenario)
 	{
+		TestLogger.logScenarioSetupStart();
+		
 		ScenarioHooks.scenarioSetup(scenario);
+		
+		SeleniumDriverHelper.initialise("chrome", "http://www.trello.com/");
+		
+		TestLogger.logScenarioSetupEnd();
 		
 		TestLogger.logScenarioStart();
 	}
@@ -62,6 +66,14 @@ public class TestRunner extends AbstractTestNGCucumberTests
 	public void after()
 	{
 		TestLogger.logScenarioEnd();
+		
+		TestLogger.logScenarioTeardownStart();
+		
+		Helper.DeleteBoard();		
+		
+		SeleniumDriverHelper.getWebDriver().quit();
+		
+		TestLogger.logScenarioTeardownEnd();
 		
 		TestLogger.logTestResult();
 	}
