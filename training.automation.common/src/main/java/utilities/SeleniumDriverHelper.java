@@ -74,9 +74,7 @@ public class SeleniumDriverHelper
 				throw new RuntimeException( "Browser choise not set or choice incorrect: " + browser );
 		}
 		
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait( 30, TimeUnit.SECONDS );
-	
+		driver.manage().window().maximize();	
 		driver.get(applicationWebsite);
 		driver.manage().timeouts().implicitlyWait( 30, TimeUnit.SECONDS );
 	}
