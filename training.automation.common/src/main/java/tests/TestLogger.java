@@ -125,6 +125,30 @@ public class TestLogger
         logEntry(entryText);
     }
     
+    public static void logScenarioSetupEnd()
+    {
+    	String entryText = "*** SCENARIO SETUP ENDED ***";
+        logEntry(entryText);
+    }
+    
+    public static void logScenarioSetupStart()
+    {
+    	String entryText = "*** SCENARIO SETUP STARTED ***";
+        logEntry(entryText);
+    }
+    
+    public static void logScenarioTeardownEnd()
+    {
+    	String entryText = "*** SCENARIO TEARDOWN END***";
+        logEntry(entryText);
+    }
+    
+    public static void logScenarioTeardownStart()
+    {
+    	String entryText = "*** SCENARIO TEARDOWN STARTED ***";
+        logEntry(entryText);
+    }
+    
     public static void logSuiteDuration()
     {
     	Duration suiteDuration = calculateSuiteDuration();
