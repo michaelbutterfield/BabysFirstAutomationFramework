@@ -1,7 +1,7 @@
 package stepdefinitions;
 
 import cucumber.api.java.en.Given;
-import trello.TrelloApiHelper;
+import trello.data.TrelloApiHelper;
 
 public class TrelloSteps
 {
