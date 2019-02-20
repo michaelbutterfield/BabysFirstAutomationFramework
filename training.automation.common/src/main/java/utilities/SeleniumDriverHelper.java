@@ -1,13 +1,17 @@
 package utilities;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -48,6 +52,13 @@ public class SeleniumDriverHelper
 		driver.navigate().to( url );
 	}
 	
+	public static void hoverOverElement(String elementText)
+	{
+		WebElement userBoard = driver.findElement(By.xpath("//div[@title='" + elementText + "']")); //TODO Create hover method with all this shit
+		Actions action = new Actions(SeleniumDriverHelper.getWebDriver());
+		action.moveToElement(userBoard).perform();
+	}
+	
 	public static void initialise( String browser, String applicationWebsite )
 	{
 		browser = browser.toLowerCase();
@@ -77,6 +88,11 @@ public class SeleniumDriverHelper
 		driver.manage().window().maximize();	
 		driver.get(applicationWebsite);
 		driver.manage().timeouts().implicitlyWait( 30, TimeUnit.SECONDS );
+	}
+	
+	public static List<WebElement> getElements(By locator)
+	{
+		return driver.findElements(locator);
 	}
 	
 	public static void waitForElementToBeClickable(WebElement element)
