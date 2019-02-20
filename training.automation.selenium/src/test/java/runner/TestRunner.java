@@ -17,7 +17,7 @@ import utilities.SeleniumDriverHelper;
 @CucumberOptions(
 		features =	{ "src/test/resources/Features" },
 		glue =		{ "stepdefinitions", "utilities", "runner" },
-		tags =		{ "@BoardsPage" },
+		tags =		{ "@AddingListsAndCards" },
 		plugin =	{ "pretty:target/resources/cucumber-pretty.txt", "usage:TestReports/cucumber-usage.json",
 					  "json:TestReports/cucumber.json", "html:target/resources/cucumber" })
 
@@ -29,8 +29,6 @@ public class TestRunner extends AbstractTestNGCucumberTests
 	{
 		TestLogger.logSuiteSetupStart();
 		
-		System.out.println("welp");
-		
 		TestLogger.logSuiteSetupEnd();
 	}
 	
@@ -38,10 +36,6 @@ public class TestRunner extends AbstractTestNGCucumberTests
 	public void testSuiteTearDown()
 	{
 		TestLogger.logSuiteTeardownStart();
-		
-		Helper.DeleteBoard();		
-		
-		SeleniumDriverHelper.getWebDriver().quit();
 		
 		TestLogger.logSuiteTeardownEnd();
 		
@@ -71,7 +65,7 @@ public class TestRunner extends AbstractTestNGCucumberTests
 		
 		Helper.DeleteBoard();		
 		
-		SeleniumDriverHelper.getWebDriver().quit();
+		SeleniumDriverHelper.getWebDriver().close();
 		
 		TestLogger.logScenarioTeardownEnd();
 		
