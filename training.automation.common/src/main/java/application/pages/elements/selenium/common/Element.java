@@ -34,6 +34,28 @@ public class Element
 		this.pageName = pageName;
 	}
 	
+	public void assertElementIsClickable()
+	{
+		String assertionDescription = String.format("Assert Element '%1$s' on page '%2$s' is clickable", name, pageName);
+		
+		TestLogger.createTestStep("Assert Element is Clickable,", name, pageName);
+		
+		WebElement element = null;
+		
+		try		
+		{
+			element = getWebElement(true, false);					
+		}
+		catch (Exception e)
+		{
+			handleException("Assert Element is Clickable", e);
+		}
+		finally
+		{
+			TestHelper.assertThat(element, is(notNullValue()), assertionDescription);	
+		}
+	}
+	
 	public Boolean assertElementIsNotDisplayed()
 	{
 		WebElement element = null;
@@ -62,7 +84,7 @@ public class Element
 		
 		try		
 		{
-			element = getWebElement(false, false);					
+			element = getWebElement(false, true);					
 		}
 		catch (Exception e)
 		{
@@ -118,12 +140,9 @@ public class Element
 		}
 	}
 	
-	public void jsClick()
-	{		
-		TestLogger.createTestStep("Javascript Click", name, pageName);
-		
-		JavascriptExecutor executor = (JavascriptExecutor) SeleniumDriverHelper.getWebDriver();
-		executor.executeScript("arguments[0].click();", getWebElement(true, true));
+	public Boolean Exists()
+	{
+		return SeleniumDriverHelper.getElements(locator).size() > 0;
 	}
 	
 	public String getElementAttribute(String attributeName)
@@ -167,6 +186,14 @@ public class Element
 	public String getName()
 	{
 		return name;
+	}
+	
+	public void jsClick()
+	{		
+		TestLogger.createTestStep("Javascript Click", name, pageName);
+		
+		JavascriptExecutor executor = (JavascriptExecutor) SeleniumDriverHelper.getWebDriver();
+		executor.executeScript("arguments[0].click();", getWebElement(true, true));
 	}
 	
 	public void waitForElementToBeClickable()
