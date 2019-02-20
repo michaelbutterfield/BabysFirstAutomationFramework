@@ -29,7 +29,7 @@ public class SplashPageSteps
 			}
 			
 			DesktopWebsite.header.accountAvatar.jsClick();
-			DesktopWebsite.header.logOutButton.click();
+			DesktopWebsite.header.logOut.click();
 			SeleniumDriverHelper.getWebDriver().manage().deleteAllCookies();	
 			System.out.println("deleting cookies");
 			DesktopWebsite.logInPage.giantTrelloImage.click();

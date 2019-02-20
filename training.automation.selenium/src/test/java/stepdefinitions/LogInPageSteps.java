@@ -1,5 +1,7 @@
 package stepdefinitions;
 
+import static org.hamcrest.Matchers.is;
+
 import org.testng.Assert;
 
 import application.DesktopWebsite;
@@ -7,11 +9,9 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import trello.TrelloWebData;
 import utilities.SeleniumDriverHelper;
 import utilities.TestHelper;
-
-import static org.hamcrest.Matchers.is;
+import utilities.TrelloWebData;
 
 public class LogInPageSteps
 {
@@ -27,8 +27,8 @@ public class LogInPageSteps
 		DesktopWebsite.logInPage.createAnAccount.assertElementIsDisplayed();
 		DesktopWebsite.logInPage.emailAddress.inputText(email);
 		DesktopWebsite.logInPage.password.inputText(password);
-		DesktopWebsite.logInPage.logInButton.click();
-		DesktopWebsite.header.addButton.waitForElementToBeClickable();
+		DesktopWebsite.logInPage.logIn.click();
+		DesktopWebsite.header.add.waitForElementToBeClickable();
 		Assert.assertEquals(SeleniumDriverHelper.getWebDriver().getTitle(), "Boards | Trello");
 	}
 	
@@ -43,7 +43,7 @@ public class LogInPageSteps
 	{
 		DesktopWebsite.logInPage.emailAddress.inputText(TrelloWebData.getUsername());
 		DesktopWebsite.logInPage.password.inputText(TrelloWebData.getPassword());
-		DesktopWebsite.logInPage.logInButton.click();
+		DesktopWebsite.logInPage.logIn.click();
 	}
 	
 	@When ("^I enter invalid credentials$")
@@ -51,7 +51,7 @@ public class LogInPageSteps
 	{
 		DesktopWebsite.logInPage.emailAddress.inputText("wrongemail@email.com");
 		DesktopWebsite.logInPage.password.inputText("password123");
-		DesktopWebsite.logInPage.logInButton.click();
+		DesktopWebsite.logInPage.logIn.click();
 	}
 	
 	@And("^I enter \"(.*?)\" in the password field")
@@ -63,21 +63,12 @@ public class LogInPageSteps
 	@And("^I click the log in button$")
 	public static void iClickTheLogInButton()
 	{
-		DesktopWebsite.logInPage.logInButton.click();
+		DesktopWebsite.logInPage.logIn.click();
 	}
 	
 	@Then ("^I will still be on the log in page$")
 	public static void iWillStillBeOnTheLogInPage()
 	{
-		try
-		{
-			Thread.sleep(3000);
-		}
-		catch (Exception e)
-		{
-			
-		}
-		
 		String stepDescription = ("Assert browser is currently on the log in page");
 		TestHelper.assertThat(SeleniumDriverHelper.getWebDriver().getTitle(), is("Log in to Trello"), stepDescription);
 	}

@@ -1,118 +1,69 @@
 package stepdefinitions;
 
+import static org.hamcrest.Matchers.is;
+
+import org.hamcrest.core.Is;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+
 import application.DesktopWebsite;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import trello.TrelloWebData;
-
-import static org.hamcrest.Matchers.is;
-
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-
 import utilities.SeleniumDriverHelper;
 import utilities.TestHelper;
+import utilities.TrelloWebData;
 
 public class BoardsPageSteps
 {
-	@Given ("^I was on the boards page$")
-	public static void iWasOnTheBoardsPage()
-	{
-		try
-		{
-			Thread.sleep(3000);
-		}
-		catch (Exception e)
-		{
-			
-		}
-		
-		Assert.assertEquals("Boards | Trello", SeleniumDriverHelper.getWebDriver().getTitle());
-		System.out.println("Assert browser is currently on the Boards page");
-	}
-	
-	@Given ("^I was on the splash page$")
+	@Given ("^I am on the splash page$")
 	public static void iWasOnTheSplashPage()
 	{
 		DesktopWebsite.splashPage.logIn.assertElementIsDisplayed();
 	}
 	
+	@Given ("^I am on the boards page$")
+	public static void iWasOnTheBoardsPage()
+	{
+		DesktopWebsite.header.add.waitForElementToBeClickable();
+		TestHelper.assertThat(SeleniumDriverHelper.getWebDriver().getTitle(), is("Boards | Trello"), "Assert that the framework is on the boards page.");
+	}
+	
 	@Given ("^I clicked on the user created board$")
 	public static void iClickedOnTheUserCreatedBoard()
 	{
-		DesktopWebsite.boardsPage.userBoardButton.click();
+		DesktopWebsite.boardsPage.userBoard.click();
 	}
 	
 	@Given ("^I click the add button in the top right")
 	public static void iClickTheAddButtonInTheTopRight()
 	{
-		DesktopWebsite.header.addButton.click();
-	}
-	
-	@Given ("^I set up the environment with email and password and create the board$")
-	public static void iSetUpTheEnvironmentWithEmailAndPasswordAndCreateTheBoard()
-	{
-		DesktopWebsite.splashPage.logIn.click();
-		DesktopWebsite.logInPage.emailAddress.inputText(TrelloWebData.getUsername());
-		DesktopWebsite.logInPage.password.inputText(TrelloWebData.getPassword());
-		DesktopWebsite.logInPage.logInButton.click();
-		DesktopWebsite.header.addButton.waitForElementToBeClickable();
-		TestHelper.assertThat(SeleniumDriverHelper.getWebDriver().getTitle(), is("Boards | Trello"), "Assert that the title of the web page '" + SeleniumDriverHelper.getWebDriver().getTitle() + "'" + " is equal to what is expected: 'Boards | Trello'");
-		DesktopWebsite.header.addButton.click();
-		DesktopWebsite.boardsPage.createNewBoardButton.click();
-		DesktopWebsite.createBoardPage.nameInput.inputText("TestBoard");
-		DesktopWebsite.createBoardPage.backgroundSelectionButton.click();
-		DesktopWebsite.createBoardPage.createBoardButton.click();
-		
-		try
-		{
-			Thread.sleep(2000);
-		}
-		catch (Exception e)
-		{
-
-		}
-		
-		DesktopWebsite.header.backToHome.jsClick();
-		DesktopWebsite.boardsPage.userBoardButton.assertElementIsDisplayed();
+		DesktopWebsite.header.add.click();
 	}
 	
 	@When ("^I click the Create Board... option$")
 	public static void iClickTheCreateBoardOption()
 	{
-		DesktopWebsite.boardsPage.createNewBoardButton.click();
+		DesktopWebsite.boardsPage.createNewBoard.click();
 	}
 	
 	@When ("^I click the favourite board star$")
 	public static void iClickTheFavouriteBoardStar()
 	{
-		WebElement userBoard = SeleniumDriverHelper.getWebDriver().findElement(By.xpath("//div[contains(text(),'TestBoard')]"));
-		Actions action = new Actions(SeleniumDriverHelper.getWebDriver());
-		action.moveToElement(userBoard).perform();
-		DesktopWebsite.boardsPage.favouriteButton.click();
+		SeleniumDriverHelper.hoverOverElement("TestBoard");
+		
+		DesktopWebsite.boardsPage.favourite.click();
 	}
 	
 	@When ("^I create the user board$")
 	public static void iCreateTheUserBoard()
 	{
-		DesktopWebsite.header.addButton.click();
-		DesktopWebsite.boardsPage.createNewBoardButton.click();
+		DesktopWebsite.header.add.click();
+		DesktopWebsite.boardsPage.createNewBoard.click();
 		DesktopWebsite.createBoardPage.nameInput.inputText("TestBoard");
-		DesktopWebsite.createBoardPage.backgroundSelectionButton.click();
-		DesktopWebsite.createBoardPage.createBoardButton.click();
-		
-		try
-		{
-			Thread.sleep(2000);
-		}
-		catch (Exception e)
-		{
-
-		}
+		//DesktopWebsite.createBoardPage.backgroundSelection.click();
+		DesktopWebsite.createBoardPage.createBoard.click();
 	}
 
 	@When ("^I log in$")
@@ -122,14 +73,7 @@ public class BoardsPageSteps
 		DesktopWebsite.logInPage.createAnAccount.waitForElementToVisible();
 		DesktopWebsite.logInPage.emailAddress.inputText(TrelloWebData.getUsername());
 		DesktopWebsite.logInPage.password.inputText(TrelloWebData.getPassword());
-		DesktopWebsite.logInPage.logInButton.click();
-	}
-	
-	@And ("^I am on the boards page$")
-	public static void iAmOnTheBoardsPage()
-	{
-		DesktopWebsite.header.addButton.waitForElementToBeClickable();
-		TestHelper.assertThat(SeleniumDriverHelper.getWebDriver().getTitle(), is("Boards | Trello"), "Assert that the title of the web page '" + SeleniumDriverHelper.getWebDriver().getTitle() + "'" + " is equal to what is expected: 'Boards | Trello'");
+		DesktopWebsite.logInPage.logIn.click();
 	}
 	
 	@And ("^I confirm the board is no longer there$")
@@ -142,22 +86,13 @@ public class BoardsPageSteps
 	public static void iCreateANewBoardWithNameAndABackground(String boardName)
 	{
 		DesktopWebsite.createBoardPage.nameInput.inputText(boardName);
-		DesktopWebsite.createBoardPage.backgroundSelectionButton.click();
-		DesktopWebsite.createBoardPage.createBoardButton.click();
+		DesktopWebsite.createBoardPage.backgroundSelection.click();
+		DesktopWebsite.createBoardPage.createBoard.click();
 	}
 	
 	@Then ("^I will be on the Trello user boards page$")
 	public static void iWillBeOnTheTrelloUserBoardsPage()
 	{
-		try
-		{
-			Thread.sleep(3000);
-		}
-		catch (Exception e)
-		{
-			
-		}
-		
 		String stepDescription = "Assert that the title of the web page '" + SeleniumDriverHelper.getWebDriver().getTitle() + "'" + " is equal to what is expected: 'Boards | Trello'";
 		TestHelper.assertThat(SeleniumDriverHelper.getWebDriver().getTitle(), is("Boards | Trello"), stepDescription);
 	}
@@ -181,13 +116,16 @@ public class BoardsPageSteps
 	@Then ("^the environment will be set up$")
 	public static void theEnvironmentWillBeSetUp()
 	{
+		TestHelper.sleepInSeconds(4);
+		
 		DesktopWebsite.header.backToHome.jsClick();
-		DesktopWebsite.boardsPage.userBoardButton.assertElementIsDisplayed();
+		DesktopWebsite.boardsPage.userBoard.waitForElementToBeClickable();
+		DesktopWebsite.boardsPage.userBoard.assertElementIsClickable();
 	}
 	
 	@Then ("^I confirm the board is created$")
 	public static void iConfirmTheBoardIsCreated()
 	{
-		DesktopWebsite.boardsPage.userBoardButton.assertElementIsDisplayed();
+		DesktopWebsite.boardsPage.userBoard.assertElementIsDisplayed();
 	}
 }

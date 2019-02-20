@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import application.DesktopWebsite;
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -12,6 +13,8 @@ import utilities.SeleniumDriverHelper;
 import utilities.TestHelper;
 
 import static org.hamcrest.Matchers.is;
+
+import java.util.List;
 
 public class SpecificBoardPageSteps
 {
@@ -35,53 +38,36 @@ public class SpecificBoardPageSteps
 	@When ("^I click More in the side menu$")
 	public static void iClickMoreInTheSideMenu()
 	{
-		DesktopWebsite.specificBoardsPage.moreSideMenuButton.click();
+		DesktopWebsite.specificBoardsPage.moreSideMenu.click();
 	}
 	
-	@When ("^I create three new lists called \"(.*?)\", \"(.*?)\" and \"(.*?)\" and add several cards to each$")
-	public void iCreateThreeNewListsCalledToDoDoingAndDoneAndAddSeveralCardsToEach(String toDo, String doing, String done)
-	{		
-		DesktopWebsite.specificBoardsPage.addAList.click();
-		DesktopWebsite.specificBoardsPage.enterListTitle.inputText(toDo);
-		DesktopWebsite.specificBoardsPage.addListButton.click();
-		DesktopWebsite.specificBoardsPage.addACard.click();
-		
-		for(int i = 0; i < 5; i++)
+	@When ("^I create a new list called \"(.*?)\"$")
+	public void iCreateANewListCalled(String passedName)
+	{
+		if (DesktopWebsite.specificBoardsPage.addAList.Exists())
 		{
-			String testText = String.format("Test Text Placeholder %1$s", i);
-			DesktopWebsite.specificBoardsPage.enterCardTitle.inputText(testText);
-			DesktopWebsite.specificBoardsPage.addCardButton.click();
+			DesktopWebsite.specificBoardsPage.addAList.click();
 		}
 		
-		System.out.println("Successfully created To Do and tasks 0-4");
+		DesktopWebsite.specificBoardsPage.enterListTitle.inputText(passedName);
+		DesktopWebsite.specificBoardsPage.addList.click();
+	}
+	
+	@And ("^I add five cards to the new list$")
+	public static void iAddFiveCardsToTheNewList(DataTable tab)
+	{
+		List<String> list = tab.asList(String.class); 
 		
-		//Doing
-		DesktopWebsite.specificBoardsPage.enterListTitle.inputText(doing);
-		DesktopWebsite.specificBoardsPage.addListButton.click();
-		DesktopWebsite.specificBoardsPage.addACard.click();
-		
-		for(int i = 5; i < 10; i++)
+		for (int i = 0; i < list.size(); i++)
 		{
-			String testText = String.format("Test Text Placeholder %1$s", i);
-			DesktopWebsite.specificBoardsPage.enterCardTitle.inputText(testText);
-			DesktopWebsite.specificBoardsPage.addCardButton.click();
+			if (DesktopWebsite.specificBoardsPage.addACard.Exists())
+			{
+				DesktopWebsite.specificBoardsPage.addACard.click();	
+			}
+			
+			DesktopWebsite.specificBoardsPage.enterCardTitle.inputText(list.get(i));
+			DesktopWebsite.specificBoardsPage.addCard.click();			
 		}
-		
-		System.out.println("Successfully created 'Doing' and tasks 5-9");
-		
-		//Done
-		DesktopWebsite.specificBoardsPage.enterListTitle.inputText(done);
-		DesktopWebsite.specificBoardsPage.addListButton.click();
-		DesktopWebsite.specificBoardsPage.addACard.click();
-		
-		for(int i = 10; i < 15; i++)
-		{
-			String testText = String.format("Test Text Placeholder %1$s", i);
-			DesktopWebsite.specificBoardsPage.enterCardTitle.inputText(testText);
-			DesktopWebsite.specificBoardsPage.addCardButton.click();
-		}
-		
-		System.out.println("Successfully created Done and tasks 10-14");
 	}
 	
 	@And ("^I click and drag three cards from Done to Doing$")
