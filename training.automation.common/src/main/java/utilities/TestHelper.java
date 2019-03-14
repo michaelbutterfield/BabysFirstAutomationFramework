@@ -10,6 +10,7 @@ import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
 
 import cucumber.api.Scenario;
+import tests.TestLogger;
 
 
 public final class TestHelper
@@ -22,7 +23,7 @@ public final class TestHelper
 	}
 	
 	public static <T> void assertThat(T actual, Matcher<? super T> matcher, String stepDescription, Boolean takeScreenshot)
-	{
+	{		
 		try
 		{		
 			MatcherAssert.assertThat(stepDescription, actual, matcher);
