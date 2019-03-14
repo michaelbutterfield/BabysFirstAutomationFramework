@@ -10,7 +10,6 @@ import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
 
 import cucumber.api.Scenario;
-import tests.TestLogger;
 
 
 public final class TestHelper

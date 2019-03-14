@@ -2,8 +2,6 @@ package stepdefinitions;
 
 import static org.hamcrest.Matchers.is;
 
-import org.hamcrest.core.Is;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 
 import application.DesktopWebsite;
